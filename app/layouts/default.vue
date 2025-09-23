@@ -2,7 +2,7 @@
     <div id="ims-page" data-theme="dark">
         <hmn-header />
         <div id="ims-content">
-            <nuxt-page />
+            <NuxtPage /> 
         </div>
     </div>
 </template>

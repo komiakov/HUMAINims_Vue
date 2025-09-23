@@ -18,40 +18,49 @@ const isActive = (path: string) => {
 }
 
 const linkRefs = ref<HTMLElement[]>([])
+const lineStyle = ref({ width: '0px', left: '0px' })
 
 function updateLinkRefs() {
-    linkRefs.value = Array.from(document.querySelectorAll('.nav__link'))
+  linkRefs.value = Array.from(document.querySelectorAll('.nav__link'))
+  updateLineStyle()
 }
 
-function getLineStyle() {
-    const activeLink = linkRefs.value.find(link => {
-        const path = link.dataset.path
-        if (!path) return false
-        if (path === '/' && route.path === '/') return true
-        if (path !== '/' && route.path.startsWith(path)) return true
-        return false
+function updateLineStyle() {
+  let activeLink: HTMLElement | undefined
+
+  if (route.path === '/') {
+    activeLink = linkRefs.value.find(link => link.dataset.path === '/')
+  } else {
+    activeLink = linkRefs.value.find(link => {
+      const path = link.dataset.path
+      return path && path !== '/' && route.path.startsWith(path)
     })
+  }
 
-    if (!activeLink) return { width: '0px', left: '0px' }
+  if (!activeLink) {
+    lineStyle.value = { width: '0px', left: '0px' }
+    return
+  }
 
-    const rect = activeLink.getBoundingClientRect()
-    const parentRect = activeLink.parentElement!.getBoundingClientRect()
-    return {
-        width: `${rect.width}px`,
-        left: `${rect.left - parentRect.left}px`,
-    }
+  const rect = activeLink.getBoundingClientRect()
+  const parentRect = activeLink.parentElement!.getBoundingClientRect()
+  lineStyle.value = {
+    width: `${rect.width}px`,
+    left: `${rect.left - parentRect.left}px`
+  }
 }
 
 onMounted(() => {
-    nextTick(updateLinkRefs)
-    window.addEventListener('resize', updateLinkRefs)
+  nextTick(updateLinkRefs)
+  window.addEventListener('resize', updateLineStyle)
 })
 
-watch(() => route.path, () => nextTick(updateLinkRefs))
+watch(() => route.path, () => nextTick(updateLineStyle))
 
 onBeforeUnmount(() => {
-    window.removeEventListener('resize', updateLinkRefs)
+  window.removeEventListener('resize', updateLineStyle)
 })
+
 </script>
 
 <template>
@@ -93,7 +102,7 @@ onBeforeUnmount(() => {
                     <span class="nav__link__icon icon" v-html="icons[item.icon]"></span>
                     <span class="nav__link__label">{{ item.label }}</span>
                 </NuxtLink>
-                <span id="nav__line" :style="getLineStyle()"></span>
+                <span id="nav__line" :style="lineStyle"></span>
             </nav>
         </div>
     </header>
