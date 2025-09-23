@@ -3,7 +3,7 @@
         <section>
             <hmn-dropdown label="Create" icon-left="add" type="accent" alignment="left">
                 <template #>
-                    <hmn-button label="Database" icon-left="database" />
+                    <hmn-button label="Database" icon-left="database" link="/databases/new"  />
                     <hmn-button label="Folder" icon-left="addFolder" :disabled="true" />
                 </template>
             </hmn-dropdown>

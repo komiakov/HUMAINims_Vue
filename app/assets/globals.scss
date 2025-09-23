@@ -2,6 +2,9 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .icon {
@@ -33,4 +36,13 @@ hr {
   border: none;
   opacity: 0.8;
   background-color: var(--brdr-color);
+}
+
+.scroll {
+  height: 100%;
+  display: grid;
+  align-items: start;
+  align-content: start;
+  gap: 9px;
+  overflow-y: auto;
 }

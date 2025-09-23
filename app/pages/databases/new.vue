@@ -1,0 +1,54 @@
+<template>
+    <div id="functional-panel" class="container-flex">
+        <section>
+            <hmn-button icon-left="arrowLeft" type="accent" :disabled="true" />
+        </section>
+        <section>
+            <hmn-button label="Edit form" icon-left="editForm" class="mbl-hide" :disabled="true" />
+            <hmn-button label="Save" icon-left="save" type="accent" :disabled="true" />
+        </section>
+    </div>
+
+    <div id="ims-body">
+        <div id="database-name-add-column">
+            <hmn-input placeholder="Database name" />
+            <hmn-button label="Add column" icon-left="add" type="accent" :disabled="true" />
+        </div>
+        <div id="search-columns">
+            <hmn-input placeholder="Search columns" icon="search" />
+        </div>
+        <div class="scroll">
+
+        </div>
+    </div>
+</template>
+
+<style lang="scss">
+    #ims-body {
+        grid-template-rows: auto auto 1fr;
+        padding: 12px;
+        
+        #database-name-add-column,
+        #search-columns {
+            display: flex;
+        }
+
+        #database-name-add-column {
+            gap: 9px;
+            :nth-child(1) {
+                flex: 1;
+            }
+        }
+
+        #database-name-add-column,
+        #search-columns,
+        .scroll {
+            max-width: 960px; width: 100%;
+            margin: 0 auto;
+            padding: 9px;
+            background-color: var(--bg-main);
+            border: 1px solid var(--brdr-color);
+            border-radius: 12px;
+        }
+    }
+</style>

@@ -162,7 +162,7 @@ function handleClick(event: Event) {
     }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 719px) {
     .hmn-button.mbl-hide {
         .hmn-button__label {
             display: none;
