@@ -12,13 +12,13 @@
     <div id="ims-body">
         <div id="database-name-add-column">
             <hmn-input placeholder="Database name" />
-            <hmn-button label="Add column" icon-left="add" type="accent" :disabled="true" />
+            <hmn-button label="Add column" icon-left="add" type="accent mbl-hide" :disabled="true" />
         </div>
         <div id="search-columns">
             <hmn-input placeholder="Search columns" icon="search" />
         </div>
         <div class="scroll">
-
+            <hmn-column />
         </div>
     </div>
 </template>
