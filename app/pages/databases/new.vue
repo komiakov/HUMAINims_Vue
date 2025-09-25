@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import draggable from "vuedraggable"
 const { database, addColumn } = useColumns()
 </script>
 
@@ -16,14 +17,16 @@ const { database, addColumn } = useColumns()
     <div id="ims-body">
         <div id="database-name-add-column">
             <hmn-input placeholder="Database name" />
-            <hmn-button label="Add column" icon-left="add" type="accent mbl-hide" @click="addColumn" />
+            <hmn-button label="Add column" icon-left="add" type="accent" class="mbl-hide" @click="addColumn" />
         </div>
         <div id="search-columns">
             <hmn-input placeholder="Search columns" icon="search" />
         </div>
-        <div class="scroll">
-            <hmn-column v-for="column in database.columns" :key="column.id" :columnId="column.id" />
-        </div>
+        <draggable v-if="database?.columns" class="scroll" v-model="database.columns" item-key="id" handle=".move" animation="200">
+            <template #item="{ element }">
+                <hmn-column :key="element.id" :columnId="element.id" />
+            </template>
+        </draggable>
     </div>
 </template>
 

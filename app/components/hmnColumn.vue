@@ -18,7 +18,7 @@ const column = computed(() => getColumnById(Number(props.columnId))!)
     <div class="hmn-column">
         <div className="hmn-column__header container-flex">
             <section>
-                <HmnButton icon-left="move" :disabled="true" />
+                <HmnButton icon-left="move" class="move" />
                 <span className="hmn-column__header__name">
                     {{ column.name.value }}
                 </span>
