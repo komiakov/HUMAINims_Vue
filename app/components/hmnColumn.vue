@@ -1,6 +1,16 @@
 <script setup lang="ts">
 
+const { database, getColumnById, deleteColumn } = useColumns()
+
 const isOpen = ref(false)
+
+const props = defineProps({
+    columnId: {
+        type: Number,
+    },
+})
+
+const column = computed(() => getColumnById(Number(props.columnId))!)
 
 </script>
 
@@ -10,12 +20,12 @@ const isOpen = ref(false)
             <section>
                 <HmnButton icon-left="move" :disabled="true" />
                 <span className="hmn-column__header__name">
-                    column_1
+                    {{ column.name.value }}
                 </span>
             </section>
             <section>
                 <HmnButton icon-left="duplicate" type="warning" :disabled="true" />
-                <HmnButton icon-left="delete" type="alert" :disabled="true" />
+                <HmnButton icon-left="delete" type="alert" @click="deleteColumn(column.id)" :disabled="database.columns.length === 1 ? true : false" />
                 <HmnButton icon-left="arrowDown" type="accent" @click="isOpen = !isOpen" :class="{ 'rotate': isOpen }" />
             </section>
         </div>
@@ -24,7 +34,7 @@ const isOpen = ref(false)
             <div class="row">
                 <div class="input-block input-block__half">
                     <span class="input-block__label">Column name <span class="required">*</span></span>
-                    <HmnInput placeholder="Required" />
+                    <HmnInput placeholder="Required" v-model="column.name.value" />
                 </div>
             </div>
         </div>

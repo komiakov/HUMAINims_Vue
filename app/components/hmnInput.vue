@@ -28,8 +28,8 @@ const emit = defineEmits(["update:modelValue"])
     <div class="hmn-input">
         <span v-if="icon && icons[icon]" v-html="icons[icon]" class="hmn-input__icon icon"></span>
         <input :type="type" :placeholder="placeholder" :value="modelValue"
-            @blur="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
-            @keydown.enter.prevent="emit('update:modelValue', ($event.target as HTMLInputElement).value)">
+            @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+        >
         <span v-if="modelValue || modelValue == '0'" v-html="icons['cancel']" @click="emit('update:modelValue', '')"
             class="hmn-input__icon hmn-input__icon--clear icon">
         </span>
