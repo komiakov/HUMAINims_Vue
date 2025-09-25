@@ -5,10 +5,6 @@ const props = defineProps({
         type: String,
         default: ""
     },
-    link: {
-        type: String,
-        default: ""
-    },
     iconLeft: {
         type: String,
         default: ""
@@ -48,9 +44,11 @@ onBeforeUnmount(() => {
     <div class="hmn-dropdown" ref="dropdownRef">
         <hmn-button :label="label" :type="type" :iconLeft="iconLeft" :iconRight="iconRight" @click="isOpen = !isOpen" />
 
-        <div v-if="isOpen" class="hmn-dropdown__body" :class="alignment">
-            <slot></slot>
-        </div>
+        <transition name="dropdown-fade">
+            <div v-show="isOpen" class="hmn-dropdown__body" :class="alignment">
+                <slot></slot>
+            </div>
+        </transition>
     </div>
 </template>
 
@@ -79,6 +77,7 @@ onBeforeUnmount(() => {
         &.right {
             right: 0;
         }
+
         &.left {
             left: 0;
         }

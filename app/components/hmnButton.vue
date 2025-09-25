@@ -101,6 +101,7 @@ function handleClick(event: Event) {
     .hmn-button__label {
         padding: 0 9px;
         font-size: 12px;
+        font-weight: 400;
     }
 
     &.primary,
