@@ -16,7 +16,7 @@ const { database, addColumn } = useColumns()
 
     <div id="ims-body">
         <div id="database-name-add-column">
-            <hmn-input placeholder="Database name" />
+            <hmn-input placeholder="Database name" v-model="database.name.value" />
             <hmn-button label="Add column" icon-left="add" type="accent" class="mbl-hide" @click="addColumn" />
         </div>
         <div id="search-columns">
