@@ -26,7 +26,7 @@
 <style lang="scss">
     #ims-body {
         grid-template-rows: auto auto 1fr;
-        padding: 12px;
+        padding: 9px;
         
         #database-name-add-column,
         #search-columns {

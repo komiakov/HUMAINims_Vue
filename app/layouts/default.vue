@@ -24,7 +24,7 @@
         overflow: hidden;
 
         #functional-panel {
-            padding: 12px;
+            padding: 9px;
             border-bottom: 1px solid var(--brdr-color);
             background-color: var(--bg-main);
         }
@@ -32,7 +32,7 @@
         #ims-body {
             display: grid;
             height: 100%;
-            gap: 12px;
+            gap: 9px;
             overflow: hidden;
         }
     }

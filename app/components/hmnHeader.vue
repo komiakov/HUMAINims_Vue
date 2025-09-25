@@ -126,7 +126,7 @@ onBeforeUnmount(() => {
 header {
     display: grid;
     gap: 9px;
-    padding: 12px 12px 0;
+    padding: 9px 9px 0;
     background-color: var(--bg-main);
     border-bottom: 1px solid var(--brdr-color);
 
