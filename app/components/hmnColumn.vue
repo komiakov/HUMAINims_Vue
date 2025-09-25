@@ -13,14 +13,23 @@ const props = defineProps({
 const column = computed(() => getColumnById(Number(props.columnId))!)
 
 const columnTypes = ref([
-        { label: 'Text', code: 'text' },
-        { label: 'Number', code: 'number' },
-        { label: 'Boolean', code: 'boolean' },
+    { label: 'Text', code: 'text' },
+    { label: 'Number', code: 'number' },
+    { label: 'Boolean', code: 'boolean' },
 ])
+
+const columnFormats = ref({
+    'number': [{ label: 'Integer', code: 'integer' }, { label: 'Decimal', code: 'decimal' }],
+})
 
 const yesNo = ref([
     { label: 'Yes', code: true },
     { label: 'No', code: false },
+])
+
+const trueFalse = ref([
+    { label: 'True', code: true },
+    { label: 'False', code: false },
 ])
 
 </script>
@@ -56,9 +65,13 @@ const yesNo = ref([
                     <span class="input-block__label">Column type</span>
                     <HmnSelect :list="columnTypes" v-model="column.type.value" />
                 </div>
+                <div class="input-block input-block__half" v-if="column.type.value === 'number'">
+                    <span class="input-block__label">Column format</span>
+                    <HmnSelect :list="columnFormats[column.type.value]" v-model="column.type.value" />
+                </div>
             </div>
-            <hr>
-            <div class="row">
+            <hr v-if="column.type.value === 'text' || column.type.value === 'number'">
+            <div class="row" v-if="column.type.value === 'text' || column.type.value === 'number'">
                 <div class="input-block">
                     <span class="input-block__label">Required value</span>
                     <HmnSelect :list="yesNo" v-model="column.required.value" />
@@ -66,6 +79,31 @@ const yesNo = ref([
                 <div class="input-block">
                     <span class="input-block__label">Unique value</span>
                     <HmnSelect :list="yesNo" v-model="column.unique.value" />
+                </div>
+            </div>
+            <hr v-if="column.type.value === 'text' || column.type.value === 'number'">
+            <div class="row" v-if="column.type.value === 'text' || column.type.value === 'number'">
+                <div class="input-block">
+                    <span class="input-block__label">Min. {{ column.type.value === 'text' ? 'lenght' : 'value' }} <span
+                            class="required">*</span></span>
+                    <HmnInput placeholder="99999" v-model="column.min.value" />
+                </div>
+                <div class="input-block">
+                    <span class="input-block__label">Max. {{ column.type.value === 'text' ? 'lenght' : 'value' }} <span
+                            class="required">*</span></span>
+                    <HmnInput placeholder="99999" v-model="column.max.value" />
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="input-block" :class="{ 'input-block__half': column.type.value === 'number' }"
+                    v-if="column.type.value === 'text' || column.type.value === 'number'">
+                    <span class="input-block__label">Default value</span>
+                    <HmnInput v-model="column.default.value" />
+                </div>
+                <div class="input-block input-block__half" v-if="column.type.value === 'boolean'">
+                    <span class="input-block__label">Default value</span>
+                    <HmnSelect :list="trueFalse" v-model="column.default.value" />
                 </div>
             </div>
         </div>
