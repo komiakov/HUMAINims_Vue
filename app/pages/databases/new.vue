@@ -9,6 +9,7 @@ const { database, addColumn } = useColumns()
             <hmn-button icon-left="arrowLeft" type="accent" :disabled="true" />
         </section>
         <section>
+            <hmn-button label="Translations" icon-left="translator" :disabled="true" />
             <hmn-button label="Edit form" icon-left="editForm" class="mbl-hide" :disabled="true" />
             <hmn-button label="Save" icon-left="save" type="accent" :disabled="true" />
         </section>
