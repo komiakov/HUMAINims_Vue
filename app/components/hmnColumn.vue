@@ -40,6 +40,7 @@ const trueFalse = ref([
             <section>
                 <HmnButton icon-left="move" class="move" />
                 <span className="hmn-column__header__name">
+                    <span v-if="column.required.value" class="required">*</span>
                     {{ column.name.value }}
                 </span>
             </section>
@@ -55,7 +56,7 @@ const trueFalse = ref([
         <div v-show="isOpen" className="hmn-column__body">
             <div class="row">
                 <div class="input-block input-block__half">
-                    <span class="input-block__label">Column name <span class="required">*</span></span>
+                    <span class="input-block__label"><span class="required">*</span> Column name</span>
                     <HmnInput placeholder="Required" v-model="column.name.value" />
                 </div>
             </div>
@@ -67,7 +68,7 @@ const trueFalse = ref([
                 </div>
                 <div class="input-block input-block__half" v-if="column.type.value === 'number'">
                     <span class="input-block__label">Column format</span>
-                    <HmnSelect :list="columnFormats[column.type.value]" v-model="column.type.value" />
+                    <HmnSelect :list="columnFormats[column.type.value]" v-model="column.format.value" />
                 </div>
             </div>
             <hr v-if="column.type.value === 'text' || column.type.value === 'number'">
@@ -84,13 +85,13 @@ const trueFalse = ref([
             <hr v-if="column.type.value === 'text' || column.type.value === 'number'">
             <div class="row" v-if="column.type.value === 'text' || column.type.value === 'number'">
                 <div class="input-block">
-                    <span class="input-block__label">Min. {{ column.type.value === 'text' ? 'lenght' : 'value' }} <span
-                            v-if="column.type.value === 'text'" class="required">*</span></span>
+                    <span class="input-block__label"><span v-if="column.type.value === 'text'" class="required">*</span>
+                        Min. {{ column.type.value === 'text' ? 'lenght' : 'value' }}</span>
                     <HmnInput placeholder="0-99999" v-model="column.min.value" />
                 </div>
                 <div class="input-block">
-                    <span class="input-block__label">Max. {{ column.type.value === 'text' ? 'lenght' : 'value' }} <span
-                            v-if="column.type.value === 'text'" class="required">*</span></span>
+                    <span class="input-block__label"><span v-if="column.type.value === 'text'" class="required">*</span>
+                        Max. {{ column.type.value === 'text' ? 'lenght' : 'value' }}</span>
                     <HmnInput placeholder="0-99999" v-model="column.max.value" />
                 </div>
             </div>
@@ -121,6 +122,7 @@ const trueFalse = ref([
 
     .hmn-column__header {
         .hmn-column__header__name {
+            position: relative;
             font-size: 14px;
             font-weight: 400;
             color: var(--ft-main);
@@ -154,6 +156,7 @@ const trueFalse = ref([
                 width: 100%;
 
                 .input-block__label {
+                    position: relative;
                     margin-left: 3px;
                     font-size: 12px;
                     font-weight: 400;
