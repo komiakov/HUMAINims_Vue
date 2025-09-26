@@ -115,7 +115,7 @@ onBeforeUnmount(() => {
             :nth-child(1) {
                 font-size: 12px;
                 font-weight: 400;
-                color: var(--ft-primary);
+                color: var(--ft-main);
             }
 
             &:hover {

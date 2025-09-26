@@ -104,9 +104,7 @@ function handleClick(event: Event) {
         font-weight: 400;
     }
 
-    &.primary,
-    &.alert,
-    &.warning {
+    &.primary {
         border-color: var(--brdr-color);
 
         @include hover() {
@@ -125,6 +123,8 @@ function handleClick(event: Event) {
     }
 
     &.alert {
+        background-color: var(--alert2-w-opacity);
+        border-color: var(--alert);
         .hmn-button__icon svg path {
             stroke: var(--alert);
         }
@@ -135,6 +135,8 @@ function handleClick(event: Event) {
     }
 
     &.warning {
+        background-color: var(--warning2-w-opacity);
+        border-color: var(--warning);
         .hmn-button__icon svg path {
             stroke: var(--warning);
         }

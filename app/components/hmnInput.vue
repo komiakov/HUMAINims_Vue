@@ -30,7 +30,7 @@ const emit = defineEmits(["update:modelValue"])
         <input :type="type" :placeholder="placeholder" :value="modelValue"
             @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
         >
-        <span v-if="modelValue || modelValue == '0'" v-html="icons['cancel']" @click="emit('update:modelValue', '')"
+        <span v-if="modelValue || modelValue == '0'" v-html="icons['close']" @click="emit('update:modelValue', '')"
             class="hmn-input__icon hmn-input__icon--clear icon">
         </span>
     </div>
