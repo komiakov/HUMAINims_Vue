@@ -104,15 +104,14 @@ function handleClick(event: Event) {
         font-weight: 400;
     }
 
-    &.primary {
-        border-color: var(--brdr-color);
-
+    &.alert, &.warning, &.accent {
         @include hover() {
-            background-color: var(--bg-item-main);
+            opacity: .85;
         }
     }
 
     &.primary {
+        border-color: var(--brdr-color);
         .hmn-button__icon svg path {
             stroke: var(--accent);
         }
@@ -120,29 +119,32 @@ function handleClick(event: Event) {
         .hmn-button__label {
             color: var(--ft-main);
         }
+        @include hover() {
+            background-color: var(--bg-item-main);
+        }
     }
 
     &.alert {
-        background-color: var(--alert2-w-opacity);
+        background-color: var(--alert);
         border-color: var(--alert);
         .hmn-button__icon svg path {
-            stroke: var(--alert);
+            stroke: var(--white);
         }
 
         .hmn-button__label {
-            color: var(--alert);
+            color: var(--white);
         }
     }
 
     &.warning {
-        background-color: var(--warning2-w-opacity);
+        background-color: var(--warning);
         border-color: var(--warning);
         .hmn-button__icon svg path {
-            stroke: var(--warning);
+            stroke: var(--white);
         }
 
         .hmn-button__label {
-            color: var(--warning);
+            color: var(--white);
         }
     }
 

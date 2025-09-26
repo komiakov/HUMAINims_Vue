@@ -85,13 +85,13 @@ const trueFalse = ref([
             <div class="row" v-if="column.type.value === 'text' || column.type.value === 'number'">
                 <div class="input-block">
                     <span class="input-block__label">Min. {{ column.type.value === 'text' ? 'lenght' : 'value' }} <span
-                            class="required">*</span></span>
-                    <HmnInput placeholder="99999" v-model="column.min.value" />
+                            v-if="column.type.value === 'text'" class="required">*</span></span>
+                    <HmnInput placeholder="0-99999" v-model="column.min.value" />
                 </div>
                 <div class="input-block">
                     <span class="input-block__label">Max. {{ column.type.value === 'text' ? 'lenght' : 'value' }} <span
-                            class="required">*</span></span>
-                    <HmnInput placeholder="99999" v-model="column.max.value" />
+                            v-if="column.type.value === 'text'" class="required">*</span></span>
+                    <HmnInput placeholder="0-99999" v-model="column.max.value" />
                 </div>
             </div>
             <hr>
