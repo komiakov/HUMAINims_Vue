@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import draggable from "vuedraggable"
 const { database, addColumn } = useColumns()
+const translationMenuIsOpen = ref(false)
 </script>
 
 <template>
@@ -9,7 +10,8 @@ const { database, addColumn } = useColumns()
             <hmn-button icon-left="arrowLeft" type="accent" :disabled="true" />
         </section>
         <section>
-            <hmn-button label="Translations" icon-left="translator" :disabled="true" />
+            <hmn-button label="Translations" icon-left="translator"
+                @click="translationMenuIsOpen = true" />
             <hmn-button label="Edit form" icon-left="editForm" class="mbl-hide" :disabled="true" />
             <hmn-button label="Save" icon-left="save" type="accent" :disabled="true" />
         </section>
@@ -23,12 +25,31 @@ const { database, addColumn } = useColumns()
         <div id="search-columns">
             <hmn-input placeholder="Search columns" icon="search" />
         </div>
-        <draggable v-if="database?.columns" class="scroll" v-model="database.columns" item-key="id" handle=".move" animation="200">
+        <draggable v-if="database?.columns" class="scroll" v-model="database.columns" item-key="id" handle=".move"
+            animation="200">
             <template #item="{ element }">
                 <hmn-column :key="element.id" :columnId="element.id" />
             </template>
         </draggable>
     </div>
+
+    <transition name="dropdown-fade">
+        <div v-show="translationMenuIsOpen" id="traslations-menu">
+            <div id="traslations-menu__background"></div>
+            <div id="traslations-menu__body">
+                <div id="traslations-menu__body__header" class="container-flex">
+                    <section>
+                        <hmn-button icon-left="close" @click="translationMenuIsOpen = false" />
+                    </section>
+                    <section>
+                        <span id="traslations-menu__body__header__label">Translations</span>
+                    </section>
+                </div>
+                <hr>
+                
+            </div>
+        </div>
+    </transition>
 </template>
 
 <style lang="scss">
@@ -59,6 +80,56 @@ const { database, addColumn } = useColumns()
         background-color: var(--bg-main);
         border: 1px solid var(--brdr-color);
         border-radius: 12px;
+    }
+}
+
+#traslations-menu {
+    z-index: 99998;
+
+    &,
+    #traslations-menu__background {
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    #traslations-menu__background {
+        background-color: #000000;
+        opacity: .5;
+    }
+
+    #traslations-menu__body {
+        position: absolute;
+        z-index: 99999;
+        display: grid;
+        align-items: start;
+        align-content: start;
+        gap: 9px;
+        right: 0;
+        height: 100vh;
+        padding: 9px;
+        background-color: var(--bg-main);
+        #traslations-menu__body__header__label {
+            margin-right: 12px;
+            font-weight: 300;
+            color: var(--ft-main);
+            cursor: default;
+        }
+    }
+}
+
+@media (max-width: 719px) {
+    #traslations-menu__body {
+        width: 100vw;
+    }
+}
+
+@media (min-width: 720px) {
+    #traslations-menu__body {
+        width: 420px;
     }
 }
 </style>

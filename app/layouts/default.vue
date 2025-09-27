@@ -9,6 +9,7 @@
 
 <style lang="scss">
 #ims-page {
+    position: relative;
     display: grid;
     grid-template-rows: auto 1fr;
     width: 100vw;
