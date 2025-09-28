@@ -39,10 +39,10 @@ const translationMenuIsOpen = ref(false)
             <div id="traslations-menu__body">
                 <div id="traslations-menu__body__header" class="container-flex">
                     <section>
-                        <hmn-button icon-left="close" @click="translationMenuIsOpen = false" />
+                        <span id="traslations-menu__body__header__label">Translations</span>
                     </section>
                     <section>
-                        <span id="traslations-menu__body__header__label">Translations</span>
+                        <hmn-button icon-left="close" @click="translationMenuIsOpen = false" />
                     </section>
                 </div>
                 <hr>
@@ -113,8 +113,9 @@ const translationMenuIsOpen = ref(false)
         padding: 9px;
         background-color: var(--bg-main);
         #traslations-menu__body__header__label {
-            margin-right: 12px;
+            margin-left: 12px;
             font-weight: 300;
+            font-size: 18px;
             color: var(--ft-main);
             cursor: default;
         }
