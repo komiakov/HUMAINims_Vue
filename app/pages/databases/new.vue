@@ -46,7 +46,10 @@ const translationMenuIsOpen = ref(false)
                     </section>
                 </div>
                 <hr>
-                
+                <div id="traslations-menu__body_add">
+                    <hmn-input placeholder="Add translation" />
+                    <hmn-button icon-left="add" type="accent" />
+                </div>
             </div>
         </div>
     </transition>
@@ -107,17 +110,20 @@ const translationMenuIsOpen = ref(false)
         display: grid;
         align-items: start;
         align-content: start;
-        gap: 9px;
+        gap: 18px;
         right: 0;
         height: 100vh;
-        padding: 9px;
+        padding: 12px;
         background-color: var(--bg-main);
         #traslations-menu__body__header__label {
-            margin-left: 12px;
             font-weight: 300;
             font-size: 18px;
             color: var(--ft-main);
             cursor: default;
+        }
+        #traslations-menu__body_add {
+            display: flex;
+            gap: 9px;
         }
     }
 }
