@@ -1,7 +1,15 @@
 <script lang="ts" setup>
 import draggable from "vuedraggable"
-const { database, addColumn } = useColumns()
+const { database, addColumn, resetDatabase } = useColumns()
 const translationMenuIsOpen = ref(false)
+
+onMounted(() => {
+  addColumn()
+})
+
+onBeforeUnmount(() => {
+  resetDatabase()
+})
 </script>
 
 <template>

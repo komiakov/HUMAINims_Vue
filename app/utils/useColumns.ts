@@ -51,6 +51,7 @@ const getColumnById = (id: number) => {
 };
 
 function resetDatabase() {
+  columnIndex.value = 1
   database.columns = [];
   database.languages = ["en"];
   database.name.value = "New database";
