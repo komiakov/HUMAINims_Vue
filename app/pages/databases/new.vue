@@ -1,14 +1,24 @@
 <script lang="ts" setup>
 import draggable from "vuedraggable"
+import { useIcons } from "@/utils/useIcons";
 const { database, addColumn, resetDatabase } = useColumns()
+const icons = useIcons()
+
 const translationMenuIsOpen = ref(false)
 
+const addLanguage = ref("")
+
+function addTranslation() {
+    database.languages.push(addLanguage.value)
+    addLanguage.value = ""
+}
+
 onMounted(() => {
-  addColumn()
+    addColumn()
 })
 
 onBeforeUnmount(() => {
-  resetDatabase()
+    resetDatabase()
 })
 </script>
 
@@ -18,8 +28,7 @@ onBeforeUnmount(() => {
             <hmn-button icon-left="arrowLeft" type="accent" :disabled="true" />
         </section>
         <section>
-            <hmn-button label="Translations" icon-left="translator"
-                @click="translationMenuIsOpen = true" />
+            <hmn-button label="Translations" icon-left="translator" @click="translationMenuIsOpen = true" />
             <hmn-button label="Edit form" icon-left="editForm" class="mbl-hide" :disabled="true" />
             <hmn-button label="Save" icon-left="save" type="accent" :disabled="true" />
         </section>
@@ -55,8 +64,15 @@ onBeforeUnmount(() => {
                 </div>
                 <hr>
                 <div id="traslations-menu__body_add">
-                    <hmn-input placeholder="Add translation" />
-                    <hmn-button icon-left="add" type="accent" />
+                    <hmn-input placeholder="Add translation" v-model="addLanguage" />
+                    <hmn-button icon-left="add" type="accent" :disabled="addLanguage ? false : true"
+                        @click="addTranslation" />
+                </div>
+                <div class="scroll">
+                    <div v-for="value in database.languages" class="translation">
+                        <span class="translation-label">{{ value }}</span>
+                        <span class="translation-delete icon" v-html="icons['delete']"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -123,15 +139,42 @@ onBeforeUnmount(() => {
         height: 100vh;
         padding: 12px;
         background-color: var(--bg-main);
+
         #traslations-menu__body__header__label {
             font-weight: 300;
             font-size: 18px;
             color: var(--ft-main);
             cursor: default;
         }
+
         #traslations-menu__body_add {
             display: flex;
             gap: 9px;
+        }
+
+        .translation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 12px 12px 18px;
+            border-radius: 6px;
+            border: 1px solid var(--brdr-color);
+            background-color: var(--bg-secondary);
+
+            .translation-label {
+                font-size: 12px;
+                font-weight: 400;
+                color: var(--ft-main);
+                cursor: default;
+            }
+
+            .translation-delete {
+                cursor: pointer;
+
+                svg path {
+                    stroke: var(--alert);
+                }
+            }
         }
     }
 }
