@@ -6,12 +6,8 @@ const icons = useIcons()
 
 const translationMenuIsOpen = ref(false)
 
-const addLanguage = ref("")
+const searchLanguage = ref("")
 
-function addTranslation() {
-    database.languages.push(addLanguage.value)
-    addLanguage.value = ""
-}
 
 onMounted(() => {
     addColumn()
@@ -28,8 +24,8 @@ onBeforeUnmount(() => {
             <hmn-button icon-left="arrowLeft" type="accent" :disabled="true" />
         </section>
         <section>
-            <hmn-button label="Translations" icon-left="translator" @click="translationMenuIsOpen = true" />
-            <hmn-button label="Edit form" icon-left="editForm" class="mbl-hide" :disabled="true" />
+            <hmn-button icon-left="translator" @click="translationMenuIsOpen = true" />
+            <hmn-button icon-left="editForm" :disabled="true" />
             <hmn-button label="Save" icon-left="save" type="accent" :disabled="true" />
         </section>
     </div>
@@ -56,24 +52,14 @@ onBeforeUnmount(() => {
             <div id="traslations-menu__body">
                 <div id="traslations-menu__body__header" class="container-flex">
                     <section>
-                        <span id="traslations-menu__body__header__label">Translations</span>
+                        <span id="traslations-menu__body__header__label">Add translation</span>
                     </section>
                     <section>
                         <hmn-button icon-left="close" @click="translationMenuIsOpen = false" />
                     </section>
                 </div>
                 <hr>
-                <div id="traslations-menu__body_add">
-                    <hmn-input placeholder="Add translation" v-model="addLanguage" />
-                    <hmn-button icon-left="add" type="accent" :disabled="addLanguage ? false : true"
-                        @click="addTranslation" />
-                </div>
-                <div class="scroll">
-                    <div v-for="value in database.languages" class="translation">
-                        <span class="translation-label">{{ value }}</span>
-                        <span class="translation-delete icon" v-html="icons['delete']"></span>
-                    </div>
-                </div>
+                <hmn-input placeholder="Search" icon="search" v-model="searchLanguage" />
             </div>
         </div>
     </transition>
@@ -137,7 +123,7 @@ onBeforeUnmount(() => {
         gap: 18px;
         right: 0;
         height: 100vh;
-        padding: 12px;
+        padding: 12px 18px;
         background-color: var(--bg-main);
 
         #traslations-menu__body__header__label {
@@ -147,35 +133,6 @@ onBeforeUnmount(() => {
             cursor: default;
         }
 
-        #traslations-menu__body_add {
-            display: flex;
-            gap: 9px;
-        }
-
-        .translation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 12px 12px 18px;
-            border-radius: 6px;
-            border: 1px solid var(--brdr-color);
-            background-color: var(--bg-secondary);
-
-            .translation-label {
-                font-size: 12px;
-                font-weight: 400;
-                color: var(--ft-main);
-                cursor: default;
-            }
-
-            .translation-delete {
-                cursor: pointer;
-
-                svg path {
-                    stroke: var(--alert);
-                }
-            }
-        }
     }
 }
 
