@@ -14,6 +14,7 @@
     height: 100vh;
     overflow: hidden;
     background-color: var(--bg-main);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 @media (min-width: 720px) {
