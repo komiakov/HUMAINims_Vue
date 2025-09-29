@@ -118,52 +118,6 @@ function handleClick(event: Event) {
         }
     }
 
-    &.alert {
-        border-color: var(--alert);
-        .hmn-button__icon svg path {
-            stroke: var(--alert);
-        }
-
-        .hmn-button__label {
-            color: var(--alert);
-        }
-
-        @include hover() {
-            background-color: var(--alert2-w-opacity);
-        }
-    }
-
-    &.warning {
-        border-color: var(--warning);
-        .hmn-button__icon svg path {
-            stroke: var(--warning);
-        }
-
-        .hmn-button__label {
-            color: var(--warning);
-        }
-
-        @include hover() {
-            background-color: var(--warning2-w-opacity);
-        }
-    }
-
-    &.accent {
-        background-color: var(--accent);
-
-        .hmn-button__icon svg path {
-            stroke: var(--white);
-        }
-
-        .hmn-button__label {
-            color: var(--white);
-        }
-
-        @include hover() {
-            opacity: .85;
-        }
-    }
-
     &.disabled {
         cursor: not-allowed;
         opacity: 0.5;

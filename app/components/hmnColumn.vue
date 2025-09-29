@@ -40,7 +40,6 @@ const trueFalse = ref([
             <section>
                 <HmnButton icon-left="move" class="move" />
                 <span className="hmn-column__header__name">
-                    <span v-if="column.required.value" class="required">*</span>
                     {{ column.name.value }}
                 </span>
             </section>
@@ -60,7 +59,6 @@ const trueFalse = ref([
                     <HmnInput placeholder="Required" v-model="column.name.value" />
                 </div>
             </div>
-            <hr>
             <div class="row">
                 <div class="input-block input-block__half">
                     <span class="input-block__label">Column type</span>
@@ -71,7 +69,6 @@ const trueFalse = ref([
                     <HmnSelect :list="columnFormats[column.type.value]" v-model="column.format.value" />
                 </div>
             </div>
-            <hr v-if="column.type.value === 'text' || column.type.value === 'number'">
             <div class="row" v-if="column.type.value === 'text' || column.type.value === 'number'">
                 <div class="input-block">
                     <span class="input-block__label">Required value</span>
@@ -82,7 +79,6 @@ const trueFalse = ref([
                     <HmnSelect :list="yesNo" v-model="column.unique.value" />
                 </div>
             </div>
-            <hr v-if="column.type.value === 'text' || column.type.value === 'number'">
             <div class="row" v-if="column.type.value === 'text' || column.type.value === 'number'">
                 <div class="input-block">
                     <span class="input-block__label"><span v-if="column.type.value === 'text'" class="required">*</span>
@@ -95,7 +91,6 @@ const trueFalse = ref([
                     <HmnInput placeholder="0-99999" v-model="column.max.value" />
                 </div>
             </div>
-            <hr>
             <div class="row">
                 <div class="input-block" :class="{ 'input-block__half': column.type.value === 'number' }"
                     v-if="column.type.value === 'text' || column.type.value === 'number'">
@@ -142,7 +137,7 @@ const trueFalse = ref([
 
     .hmn-column__body {
         display: grid;
-        gap: 24px;
+        gap: 18px;
         transition: .3s all;
 
         .row {

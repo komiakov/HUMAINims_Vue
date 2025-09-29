@@ -1,35 +1,15 @@
-:root {
-    --white: #ffffff;
-    --accent: #2369d4;
-    --accent2-w-opacity: #236ad41f;
-
-    --alert: #ff4747;
-    --alert2-w-opacity: #ff7a7a0e;
-    --warning: #ffa03b;
-    --warning2-w-opacity: #ffa03b19;
-}
-
 [data-theme="light"] {
-    --bg-main: #ffffff;
-    --bg-secondary: #f6f8fa;
-
-    --bg-item-main: #f6f8fa;
-
-    --ft-main: #2f2f2f;
-    --ft-secondary: #818181;
-
-    --brdr-color: #d3d3d3;
+    --bg-main: #f6f8fa;           /* GitHub light background */
+    --bg-secondary: #ffffff;      /* Card/secondary bg */
+    --bg-item-main: #f0f1f3;      /* Hover/active bg */
+    --brdr-color: #d0d7de;        /* Border color */
+    --ft-main: #2c3d56;           /* Main text */
+    --ft-secondary: #656d76;      /* Secondary text */
+    --ft-placeholder: #8c959f;    /* Placeholder text */
+    --accent: #2c3d56;            /* Accent color */
+    --success: #2da44e;
+    --danger: #cf222e;
+    --warning: #e3b341;
+    --info: #0969da;
+    --white: #ffffff;
 }
-
-[data-theme="dark"] {
-    --bg-main: #010409;
-    --bg-secondary: #0d1117;
-
-    --bg-item-main: #212830;
-
-    --ft-main: #EDEDED;
-    --ft-secondary: #787878;
-
-    --brdr-color: #3d444d;
-}
-

@@ -21,7 +21,7 @@ onBeforeUnmount(() => {
 <template>
     <div id="functional-panel" class="container-flex">
         <section>
-            <hmn-button icon-left="arrowLeft" type="accent" :disabled="true" />
+            <hmn-button icon-left="arrowLeft" :disabled="true" />
         </section>
         <section>
             <hmn-button icon-left="translator" @click="translationMenuIsOpen = true" />

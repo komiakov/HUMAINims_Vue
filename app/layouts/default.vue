@@ -1,8 +1,8 @@
 <template>
     <div id="ims-page" data-theme="light">
-        <hmn-header />
+        <HmnSidebar />
         <div id="ims-content">
-            <NuxtPage /> 
+            <NuxtPage />
         </div>
     </div>
 </template>
@@ -10,32 +10,22 @@
 <style lang="scss">
 #ims-page {
     position: relative;
-    display: grid;
-    grid-template-rows: auto 1fr;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-main);
+}
 
-    #ims-content {
-        display: grid;
-        grid-template-rows: auto 1fr;
-        width: 100vw;
-        height: 100%;
-        overflow: hidden;
+@media (min-width: 720px) {
+    #ims-page {
+        display: flex;
 
-        #functional-panel {
-            padding: 9px;
-            border-bottom: 1px solid var(--brdr-color);
-            background-color: var(--bg-main);
+        #ims-content {
+            flex: 1;
         }
 
-        #ims-body {
-            display: grid;
-            height: 100%;
-            gap: 9px;
-            overflow: hidden;
-        }
     }
 }
+
+@media (max-width: 719px) {}
 </style>

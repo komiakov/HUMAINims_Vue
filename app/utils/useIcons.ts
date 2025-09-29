@@ -158,8 +158,8 @@ export function useIcons(): { [key: string]: string } {
     `,
     sidebar: `
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15 2L9 2C4 2 2 4 2 9L2 15C2 20 4 22 9 22L15 22C20 22 22 20 22 15L22 9C22 4 20 2 15 2Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M15 22L15 2" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 22L15 22C20 22 22 20 22 15L22 9C22 4 20 2 15 2L9 2C4 2 2 4 2 9L2 15C2 20 4 22 9 22Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 2L9 22" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     `,
     delete: `
@@ -178,8 +178,8 @@ export function useIcons(): { [key: string]: string } {
         </svg>
     `,
     logo: `
-        <svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M84.0107 4.01074L84.0059 4.01465C84.0027 4.01793 84.0027 4.02309 84.0059 4.02637L151.707 71.7275C151.895 71.915 152 72.1694 152 72.4346V168H247.011L247 168.011L314.99 236H315V399.989L247.011 332L247 332.011V236H152V397.575C152 398.466 150.923 398.912 150.293 398.282L84.0137 332.003C84.012 332.001 84.0095 332.001 84.0078 332.003C84.005 332.006 84 332.004 84 332V4.00586C84.0001 4.00267 84.0027 4.00008 84.0059 4C84.0112 4 84.0145 4.00696 84.0107 4.01074ZM315 139.999L247 71.999L315 4V139.999Z" fill="#237260"/>
+        <svg width="15" height="24" viewBox="0 0 15 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.5879 24.001L10.4678 19.8799L10.4668 19.8809V14.0615H14.5879V24.001ZM4.70898 4.12207V9.93945H10.4678L10.4668 9.94043L14.5879 14.0605H4.70898V23.001C4.70887 23.2764 4.59631 23.5252 4.41602 23.7061L0.588867 19.8789L0.587891 19.8799V1C0.587935 0.724171 0.699241 0.473859 0.879883 0.292969L4.70898 4.12207ZM14.5879 8.24219L10.4668 4.12109L14.5879 0V8.24219Z" fill="#237260"/>
         </svg>
     `,
     selected: `
