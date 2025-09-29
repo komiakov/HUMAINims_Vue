@@ -84,7 +84,6 @@ const isActive = (path: string) => {
     background: var(--bg-secondary);
     padding: 12px;
     transition: .3s all;
-    padding-bottom: env(safe-area-inset-bottom);
 
     &,
     .navigation-top,

@@ -66,6 +66,7 @@ onBeforeUnmount(() => {
         padding: 6px;
         border: 1px solid var(--brdr-color);
         border-radius: 9px;
+        background-color: var(--bg-secondary);
 
         .hmn-button {
             height: 36px;
@@ -81,18 +82,6 @@ onBeforeUnmount(() => {
         &.left {
             left: 0;
         }
-    }
-}
-
-[data-theme="light"] {
-    .hmn-dropdown__body {
-        background-color: var(--bg-main);
-    }
-}
-
-[data-theme="dark"] {
-    .hmn-dropdown__body {
-        background-color: var(--bg-secondary);
     }
 }
 </style>

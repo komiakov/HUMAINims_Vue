@@ -106,6 +106,7 @@ function handleClick(event: Event) {
 
     &.primary {
         border-color: var(--brdr-color);
+
         .hmn-button__icon svg path {
             stroke: var(--accent);
         }
@@ -113,8 +114,21 @@ function handleClick(event: Event) {
         .hmn-button__label {
             color: var(--ft-main);
         }
+
         @include hover() {
             background-color: var(--bg-item-main);
+        }
+    }
+
+    &.accent {
+        background-color: var(--accent);
+
+        .hmn-button__icon svg path {
+            stroke: var(--white);
+        }
+
+        .hmn-button__label {
+            color: var(--white);
         }
     }
 

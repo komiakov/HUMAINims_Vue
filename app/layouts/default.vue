@@ -27,6 +27,4 @@
 
     }
 }
-
-@media (max-width: 719px) {}
 </style>
