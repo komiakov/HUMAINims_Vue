@@ -12,10 +12,18 @@ const { sidebarIsMinimal } = useSidebar()
             </span>
         </section>
         <section>
-            <HmnButton icon-left="notification" />
-            <HmnButton icon-left="search" />
+            <HmnButton icon-left="notification" :disabled="true" />
+            <HmnButton icon-left="search" :disabled="true" />
         </section>
     </header>
+    <div id="functional-panel" class="container-flex">
+        <section>
+            <slot name="fp-left"></slot>
+        </section>
+        <section>
+            <slot name="fp-right"></slot>
+        </section>
+    </div>
 </template>
 
 <style>
@@ -34,5 +42,10 @@ header {
             cursor: default;
         }
     }
+}
+#functional-panel {
+    background: var(--bg-secondary);
+    padding: 12px;
+    border-bottom: 1px solid var(--brdr-color);
 }
 </style>
