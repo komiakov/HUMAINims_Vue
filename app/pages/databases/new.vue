@@ -5,11 +5,9 @@ const { database } = useColumns()
 <template>
     <HmnHeader>
         <template #header-left>
-            <hmn-input v-model="database.name.value" />
-        </template>
-        <template #header-right>
             <hmn-button icon-left="save" label="Save" type="accent mbl-hide"/>
         </template>
+        <template #header-page-name>Create database</template>
     </HmnHeader>
 </template>
 

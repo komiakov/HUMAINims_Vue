@@ -7,7 +7,6 @@
                     <HmnButton label="Folder" icon-left="addFolder" :disabled="true" />
                 </template>
             </HmnDropdown>
-            
         </template>
         <template #header-page-name>Databases</template>
     </HmnHeader>
