@@ -143,7 +143,7 @@ const isActive = (path: string) => {
         .navigation-link__label {
             color: var(--ft-main);
             font-size: 12px;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 0.04em;
         }
 
