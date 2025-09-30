@@ -4,9 +4,6 @@ const { database } = useColumns()
 
 <template>
     <HmnHeader>
-        <template #header-left>
-            <hmn-button icon-left="save" label="Save" type="accent mbl-hide"/>
-        </template>
         <template #header-page-name>Create database</template>
     </HmnHeader>
 </template>

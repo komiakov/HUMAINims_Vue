@@ -7,13 +7,12 @@ const { sidebarIsMinimal } = useSidebar()
     <header class="container-flex">
         <section>
             <HmnButton icon-left="sidebar" @click="sidebarIsMinimal = !sidebarIsMinimal" />
-            <slot name="header-left"></slot>
             <span id="header__page-name">
                 <slot name="header-page-name"></slot>
             </span>
         </section>
         <section>
-            <slot name="header-right"></slot>
+            <HmnButton icon-left="notification" />
             <HmnButton icon-left="search" />
         </section>
     </header>
