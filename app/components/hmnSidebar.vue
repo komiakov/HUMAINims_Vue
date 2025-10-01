@@ -41,21 +41,21 @@ const isActive = (path: string) => {
             </NuxtLink>
         </div>
         <div class="navigation-bottom">
-            <NuxtLink to="" class="navigation-link">
+            <NuxtLink to="/license" class="navigation-link" :class="{ 'active': isActive('/license') }">
                 <span class="icon" v-html="icons['license']"></span>
                 <span class="navigation-link__label">License</span>
             </NuxtLink>
             <hr>
-            <NuxtLink to="" class="navigation-link">
+            <NuxtLink to="/documentation" class="navigation-link" :class="{ 'active': isActive('/documentation') }">
                 <span class="icon" v-html="icons['documentation']"></span>
                 <span class="navigation-link__label">Documentation</span>
             </NuxtLink>
-            <NuxtLink to="" class="navigation-link">
+            <NuxtLink to="/support" class="navigation-link" :class="{ 'active': isActive('/support') }">
                 <span class="icon" v-html="icons['support']"></span>
                 <span class="navigation-link__label">Support</span>
             </NuxtLink>
             <hr>
-            <NuxtLink to="" class="navigation-link">
+            <NuxtLink to="/settings" class="navigation-link" :class="{ 'active': isActive('/settings') }">
                 <span class="icon" v-html="icons['settings']"></span>
                 <span class="navigation-link__label">Settings</span>
             </NuxtLink>

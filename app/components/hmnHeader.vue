@@ -6,7 +6,8 @@ const { sidebarIsMinimal } = useSidebar()
 <template>
     <header class="container-flex">
         <section>
-            <HmnButton icon-left="sidebar" @click="sidebarIsMinimal = !sidebarIsMinimal" />
+            <HmnButton icon-left="sidebar" @click="sidebarIsMinimal = !sidebarIsMinimal" type="accent" />
+            <slot name="header-left-btns"></slot>
             <span id="header__page-name">
                 <slot name="header-page-name"></slot>
             </span>
