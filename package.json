@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@vueuse/core": "^13.9.0",
     "ag-grid-enterprise": "^34.2.0",
     "ag-grid-vue3": "^34.2.0",
     "nuxt": "^4.1.2",
