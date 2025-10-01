@@ -13,7 +13,7 @@ const { sidebarIsMinimal } = useSidebar()
             </span>
         </section>
         <section>
-            <HmnButton icon-left="notification" :disabled="true" />
+            <HmnButton icon-left="notification" class="notification-desktop" :disabled="true" />
             <HmnButton icon-left="search" :disabled="true" />
         </section>
     </header>
@@ -48,5 +48,11 @@ header {
     background: var(--bg-secondary);
     padding: 12px;
     border-bottom: 1px solid var(--brdr-color);
+}
+
+@media (max-width: 719px) {
+    .notification-desktop {
+        display: none;
+    }
 }
 </style>

@@ -26,6 +26,11 @@ const isActive = (path: string) => {
                     <HmnButton icon-left="close" @click="sidebarIsMinimal = !sidebarIsMinimal" />
                 </section>
             </div>
+            <hr class="notification--mobile">
+            <NuxtLink to="" class="navigation-link notification--mobile" >
+                <span class="icon" v-html="icons['notification']"></span>
+                <span class="navigation-link__label">Notifications</span>
+            </NuxtLink>
             <hr>
             <NuxtLink to="/" class="navigation-link" :class="{ 'active': isActive('/') }">
                 <span class="icon" v-html="icons['dashboard']"></span>
@@ -174,6 +179,10 @@ const isActive = (path: string) => {
             section:nth-child(2) {
                 display: none;
             }
+        }
+
+        .notification--mobile {
+            display: none;
         }
 
         &.minimal {
