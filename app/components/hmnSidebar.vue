@@ -26,8 +26,8 @@ const isActive = (path: string) => {
                     <HmnButton icon-left="close" @click="sidebarIsMinimal = !sidebarIsMinimal" />
                 </section>
             </div>
-            <hr class="notification--mobile">
-            <NuxtLink to="" class="navigation-link notification--mobile" >
+            <hr>
+            <NuxtLink to="" class="navigation-link">
                 <span class="icon" v-html="icons['notification']"></span>
                 <span class="navigation-link__label">Notifications</span>
             </NuxtLink>
@@ -84,11 +84,18 @@ const isActive = (path: string) => {
 }
 
 .navigation {
+    position: absolute;
+    z-index: 99999;
+    top: 0;
+    left: 0;
     height: 100vh;
-    width: 260px;
-    background: var(--bg-secondary);
     padding: 12px;
-    transition: .3s all;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--brdr-color);
+
+    box-shadow: 4px 0px 6px 0px rgba(0,0,0,0.15);
+    -webkit-box-shadow: 4px 0px 6px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: 4px 0px 6px 0px rgba(0,0,0,0.15);
 
     &,
     .navigation-top,
@@ -108,7 +115,8 @@ const isActive = (path: string) => {
             height: 42px;
             background-color: var(--accent);
             border-radius: 6px;
-            svg{
+
+            svg {
                 path {
                     fill: var(--white);
                 }
@@ -171,44 +179,39 @@ const isActive = (path: string) => {
 }
 
 @media (min-width: 720px) {
+    .notification--mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 960px) {
     .navigation {
-        width: 260px;
-        border-right: 1px solid var(--brdr-color);
+        width: 66px;
 
-        #navigation-header {
-            section:nth-child(2) {
-                display: none;
-            }
-        }
-
-        .notification--mobile {
+        #navigation-header section:nth-child(2),
+        #logo #logo__label,
+        .navigation-link .navigation-link__label {
             display: none;
         }
 
-        &.minimal {
-            width: 66px;
+        @include hover() {
+            width: 260px;
 
-            #logo #logo__label {
-                display: none;
-            }
-
+            #logo #logo__label,
             .navigation-link .navigation-link__label {
-                display: none;
+                display: flex;
             }
         }
     }
 }
 
-@media (max-width: 719px) {
+@media (max-width: 959px) {
     .navigation {
-        position: absolute;
-        z-index: 99999;
-        top: 0;
-        left: -101vw;
-        width: 100vw;
+        width: 260px;
+        transition: width .1s;
 
         &.minimal {
-            left: 0;
+            left: -101vw;
         }
     }
 }

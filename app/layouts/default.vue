@@ -17,9 +17,10 @@
     padding-bottom: env(safe-area-inset-bottom);
 }
 
-@media (min-width: 720px) {
+@media (min-width: 960px) {
     #ims-page {
         display: flex;
+        padding-left: 66px;
 
         #ims-content {
             flex: 1;
