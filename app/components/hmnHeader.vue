@@ -31,6 +31,10 @@ header {
     padding: 12px;
     border-bottom: 1px solid var(--brdr-color);
 
+    section {
+        gap: 18px;
+    }
+
     section:nth-child(1) {
         gap: 12px;
         flex: 1;

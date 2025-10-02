@@ -123,7 +123,7 @@ onMounted(() => {
     }
 
     &.hide {
-        left: -240px;
+        left: -250px;
     }
 
     #navigation-content {
