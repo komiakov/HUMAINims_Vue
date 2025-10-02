@@ -34,21 +34,27 @@ const isActive = (path: string) => {
 }
 
 onClickOutside(dropdownRef, () => {
-    if (sidebarIsOpen.value === false && width.value < 960) {
-        sidebarIsOpen.value = true
+    if (sidebarIsOpen.value === true && width.value < 960) {
+        sidebarIsOpen.value = false
     }
 })
 
 const closeSidebarMobile = () => {
-    if (sidebarIsOpen.value === false && width.value < 960) {
-        sidebarIsOpen.value = true
+    if (sidebarIsOpen.value === true && width.value < 960) {
+        sidebarIsOpen.value = false
     }
 }
+
+onMounted(() => {
+    if ( width.value > 960 ) {
+        sidebarIsOpen.value = true
+    }
+})
 
 </script>
 
 <template>
-    <nav id="navigation" ref="dropdownRef" :class="{ 'hide': sidebarIsOpen }">
+    <nav id="navigation" ref="dropdownRef" :class="{ 'hide': !sidebarIsOpen }">
         <div id="navigation-content">
             <div id="navigation-top">
                 <div id="navigation-header" class="container-flex">

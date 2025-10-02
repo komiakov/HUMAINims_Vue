@@ -3,7 +3,7 @@ const { sidebarIsOpen } = useSidebar()
 </script>
 
 <template>
-    <div id="ims-page" data-theme="light" :class="{ max : sidebarIsOpen }">
+    <div id="ims-page" data-theme="light" :class="{ max : !sidebarIsOpen }">
         <HmnSidebar />
         <div id="ims-content">
             <NuxtPage />
