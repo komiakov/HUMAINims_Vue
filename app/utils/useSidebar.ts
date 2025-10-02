@@ -1,7 +1,10 @@
-const sidebarIsMinimal = ref(false)
+const sidebarIsOpen = ref(false)
+
+const toggleSidebar = () => (sidebarIsOpen.value = !sidebarIsOpen.value)
 
 export function useSidebar() {
   return {
-    sidebarIsMinimal
+    sidebarIsOpen,
+    toggleSidebar
   };
 }

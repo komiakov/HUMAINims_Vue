@@ -1,5 +1,9 @@
+<script setup lang="ts">
+const { sidebarIsOpen } = useSidebar()
+</script>
+
 <template>
-    <div id="ims-page" data-theme="light">
+    <div id="ims-page" data-theme="light" :class="{ max : sidebarIsOpen }">
         <HmnSidebar />
         <div id="ims-content">
             <NuxtPage />
@@ -20,7 +24,12 @@
 @media (min-width: 960px) {
     #ims-page {
         display: flex;
-        padding-left: 66px;
+        padding-left: 240px;
+        transition: .3s all;
+
+        &.max {
+            padding: 0;
+        }
 
         #ims-content {
             flex: 1;

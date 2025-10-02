@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { onClickOutside } from '@vueuse/core'
+import { onClickOutside, useWindowSize } from '@vueuse/core'
 
-const { sidebarIsMinimal } = useSidebar()
+const { sidebarIsOpen, toggleSidebar } = useSidebar()
 const icons = useIcons()
 const route = useRoute()
+const { width } = useWindowSize()
 
 const dropdownRef = ref(null)
 
@@ -24,9 +25,6 @@ const bottomLinks = [
     { to: '/settings', icon: 'settings', label: 'Settings' },
 ]
 
-const closeSidebar = () => (sidebarIsMinimal.value = true)
-const openSidebar = () => (sidebarIsMinimal.value = false)
-
 const isActive = (path: string) => {
     if (path == '') return false
     if ((path === '/' && route.path === '/') || (route.path.startsWith(path) && path !== '/')) {
@@ -35,44 +33,56 @@ const isActive = (path: string) => {
     return false
 }
 
-onClickOutside(dropdownRef, closeSidebar)
+onClickOutside(dropdownRef, () => {
+    if (sidebarIsOpen.value === false && width.value < 960) {
+        sidebarIsOpen.value = true
+    }
+})
+
+const closeSidebarMobile = () => {
+    if (sidebarIsOpen.value === false && width.value < 960) {
+        sidebarIsOpen.value = true
+    }
+}
 
 </script>
 
 <template>
-    <nav class="navigation" :class="{ 'minimal': sidebarIsMinimal }" ref="dropdownRef">
-        <div class="navigation-top">
-            <div id="navigation-header" class="container-flex">
-                <section>
-                    <NuxtLink to="/" id="logo">
-                        <span class="icon" v-html="icons['logo']"></span>
-                        <span id="logo__label">HUMANims</span>
+    <nav id="navigation" ref="dropdownRef" :class="{ 'hide': sidebarIsOpen }">
+        <div id="navigation-content">
+            <div id="navigation-top">
+                <div id="navigation-header" class="container-flex">
+                    <section>
+                        <NuxtLink to="/" id="logo">
+                            <span class="icon" v-html="icons['logo']"></span>
+                            <span id="logo__label">HUMANims</span>
+                        </NuxtLink>
+                    </section>
+                    <section id="sidebar-close-btn-section">
+                        <HmnButton id="sidebar-close-btn" icon-left="close" @click="toggleSidebar" />
+                    </section>
+                </div>
+                <hr>
+                <template v-for="(link, index) in topLinks" :key="index">
+                    <hr v-if="link.type === 'divider'" />
+                    <NuxtLink v-else :to="link.to" class="navigation-link" :class="{ active: isActive(link.to!) }"
+                        @click="closeSidebarMobile">
+                        <span class="icon" v-html="icons[link.icon!]"></span>
+                        <span class="navigation-link__label">{{ link.label }}</span>
                     </NuxtLink>
-                </section>
-                <section>
-                    <HmnButton icon-left="close" @click="closeSidebar" />
-                </section>
+                </template>
             </div>
-            <hr>
-            <template v-for="(link, index) in topLinks" :key="index">
-                <hr v-if="link.type === 'divider'" />
-                <NuxtLink v-else :to="link.to" class="navigation-link" :class="{ active: isActive(link.to!) }"
-                    @click="closeSidebar">
-                    <span class="icon" v-html="icons[link.icon!]"></span>
-                    <span class="navigation-link__label">{{ link.label }}</span>
-                </NuxtLink>
-            </template>
-        </div>
 
-        <div class="navigation-bottom">
-            <template v-for="(link, index) in bottomLinks" :key="index">
-                <hr v-if="link.type === 'divider'" />
-                <NuxtLink v-else :to="link.to" class="navigation-link" :class="{ active: isActive(link.to!) }"
-                    @click="closeSidebar">
-                    <span class="icon" v-html="icons[link.icon!]"></span>
-                    <span class="navigation-link__label">{{ link.label }}</span>
-                </NuxtLink>
-            </template>
+            <div id="navigation-bottom">
+                <template v-for="(link, index) in bottomLinks" :key="index">
+                    <hr v-if="link.type === 'divider'" />
+                    <NuxtLink v-else :to="link.to" class="navigation-link" :class="{ active: isActive(link.to!) }"
+                        @click="closeSidebarMobile">
+                        <span class="icon" v-html="icons[link.icon!]"></span>
+                        <span class="navigation-link__label">{{ link.label }}</span>
+                    </NuxtLink>
+                </template>
+            </div>
         </div>
     </nav>
 </template>
@@ -92,134 +102,124 @@ onClickOutside(dropdownRef, closeSidebar)
     }
 }
 
-.navigation {
-    position: absolute;
-    z-index: 99999;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    padding: 12px;
-    background: var(--bg-secondary);
-    border-right: 1px solid var(--brdr-color);
-
+#navigation {
+    z-index: 99997;
+    transition: .3s;
+    border-left: 1px solid var(--brdr-color);
     box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.15);
-    -webkit-box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.15);
 
     &,
-    .navigation-top,
-    .navigation-bottom {
-        display: grid;
-        align-content: space-between;
-        gap: 12px;
+    #navigation-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
     }
 
-    #logo {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-
-        .icon {
-            width: 42px;
-            height: 42px;
-            background-color: var(--accent);
-            border-radius: 6px;
-
-            svg {
-                path {
-                    fill: var(--white);
-                }
-            }
-        }
-
-        #logo__label {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--ft-main);
-        }
+    &.hide {
+        left: -240px;
     }
 
-    .navigation-link {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        min-height: 42px;
-        min-width: 42px;
+    #navigation-content {
+        position: relative;
+        z-index: 99999;
+        height: 100vh;
+        width: 240px;
         padding: 12px;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: 0.18s all;
+        background-color: var(--bg-secondary);
 
-        .icon {
-            svg {
-                width: 16px;
-                height: 16px;
+        &,
+        #navigation-top,
+        #navigation-bottom {
+            display: grid;
+            align-content: space-between;
+            gap: 12px;
 
-                path {
-                    stroke: var(--ft-main);
-                    transition: stroke 0.18s;
+            #logo,
+            .navigation-link {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            #logo {
+                .icon {
+                    width: 42px;
+                    height: 42px;
+                    background-color: var(--accent);
+                    border-radius: 6px;
+
+                    svg path {
+                        fill: var(--white);
+                    }
+                }
+
+                #logo__label {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: var(--ft-main);
                 }
             }
         }
 
-        .navigation-link__label {
-            color: var(--ft-main);
-            font-size: 12px;
-            font-weight: 400;
-            letter-spacing: 0.04em;
-        }
-
-        @include hover() {
-            background: var(--bg-item-main);
-        }
-
-        &.active {
-            background: var(--accent);
+        .navigation-link {
+            height: 42px;
+            min-width: 42px;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.18s all;
 
             .icon svg path {
-                stroke: var(--white);
+                stroke: var(--ft-main);
+                transition: stroke 0.18s;
             }
 
             .navigation-link__label {
-                color: var(--white);
+                color: var(--ft-main);
+                font-size: 12px;
+                font-weight: 400;
+            }
+
+            @include hover() {
+                background: var(--bg-item-main);
+            }
+
+            &.active {
+                background: var(--accent);
+
+                .icon svg path {
+                    stroke: var(--white);
+                }
+
+                .navigation-link__label {
+                    color: var(--white);
+                }
             }
         }
-    }
-}
-
-@media (min-width: 720px) {
-    .notification--mobile {
-        display: none !important;
     }
 }
 
 @media (min-width: 960px) {
-    .navigation {
-        width: 66px;
-
-        #navigation-header section:nth-child(2),
-        #logo #logo__label,
-        .navigation-link .navigation-link__label {
+    #navigation {
+        #sidebar-close-btn-section {
             display: none;
         }
 
-        @include hover() {
-            width: 260px;
-
-            #logo #logo__label,
-            .navigation-link .navigation-link__label {
-                display: flex;
-            }
+        #navigation-content {
+            width: 240px;
         }
     }
 }
 
 @media (max-width: 959px) {
-    .navigation {
-        width: 260px;
+    #navigation {
+        &.hide {
+            left: -100vw;
+        }
 
-        &.minimal {
-            left: -101vw;
+        #navigation-content {
+            width: 300px;
         }
     }
 }
