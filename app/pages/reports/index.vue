@@ -1,7 +1,7 @@
 <template>
     <HmnHeader>
          <template #header-left-btns>
-            <HmnDropdown icon-left="add" label="Create" alignment="left" type="primary mbl-hide">
+            <HmnDropdown icon-left="add" label="Create" alignment="left" type="accent mbl-hide">
                 <HmnButton label="Report" icon-left="report" :disabled="true" />
                 <HmnButton label="Folder" icon-left="addFolder" :disabled="true" />
             </HmnDropdown>

@@ -5,7 +5,7 @@ const { toggleSidebar } = useSidebar()
 <template>
     <header class="container-flex">
         <section>
-            <HmnButton id="toggle-sidebar" icon-left="sidebar" @click="toggleSidebar" type="accent" />
+            <HmnButton id="toggle-sidebar" icon-left="sidebar" @click="toggleSidebar" />
             <slot name="header-left-btns"></slot>
             <span id="header__page-name">
                 <slot name="header-page-name"></slot>
