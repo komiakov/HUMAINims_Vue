@@ -12,7 +12,11 @@ const { toggleSidebar } = useSidebar()
             </span>
         </section>
         <section>
-            <HmnButton icon-left="search" :disabled="true" />
+            <HmnButton icon-left="search">
+                <template #kbd-slot>
+                    <span class="kbd">⌘ F</span>
+                </template>
+            </HmnButton>
         </section>
     </header>
     <div id="functional-panel" class="container-flex">

@@ -53,6 +53,7 @@ function handleClick(event: Event) {
         <span v-if="iconLeft" class="hmn-button__icon icon" v-html="icons[iconLeft]"></span>
         <span v-if="label" class="hmn-button__label">{{ label }}</span>
         <span v-if="iconRight" class="hmn-button__icon icon" v-html="icons[iconRight]"></span>
+        <slot name="kbd-slot"></slot>
     </button>
 </template>
 
@@ -99,6 +100,7 @@ function handleClick(event: Event) {
     }
 
     .hmn-button__label {
+        flex: 1;
         padding: 0 9px;
         font-size: 12px;
         font-weight: 400;
