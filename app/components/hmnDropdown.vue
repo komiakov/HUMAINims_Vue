@@ -61,7 +61,7 @@ onBeforeUnmount(() => {
         display: grid;
         position: absolute;
         gap: 9px;
-        top: 48px;
+        top: 42px;
         min-width: 240px;
         padding: 6px;
         border: 1px solid var(--brdr-color);

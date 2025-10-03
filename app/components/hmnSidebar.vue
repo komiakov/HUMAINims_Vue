@@ -46,7 +46,7 @@ const closeSidebarMobile = () => {
 }
 
 onMounted(() => {
-    if ( width.value > 960 ) {
+    if (width.value > 960) {
         sidebarIsOpen.value = true
     }
 })
@@ -88,6 +88,17 @@ onMounted(() => {
                         <span class="navigation-link__label">{{ link.label }}</span>
                     </NuxtLink>
                 </template>
+                <hr>
+                <div id="user-info">
+                    <div id="user-info__image">
+                        <span id="user-info__image__lttrs">AK</span>
+                    </div>
+                    <div id="user-info__data">
+                        <span id="user-info__data__name">Andrii KOMIAKOV</span>
+                        <span id="user-info__data__email">andrii.komiakov@icloud.com</span>
+                    </div>
+                    <HmnButton icon-left="logOut" />
+                </div>
             </div>
         </div>
     </nav>
@@ -150,8 +161,8 @@ onMounted(() => {
 
             #logo {
                 .icon {
-                    width: 42px;
-                    height: 42px;
+                    width: 36px;
+                    height: 36px;
                     background-color: var(--accent);
                     border-radius: 6px;
 
@@ -169,8 +180,8 @@ onMounted(() => {
         }
 
         .navigation-link {
-            height: 42px;
-            min-width: 42px;
+            height: 36px;
+            min-width: 36px;
             padding: 12px;
             border-radius: 6px;
             cursor: pointer;
@@ -200,6 +211,55 @@ onMounted(() => {
 
                 .navigation-link__label {
                     color: var(--white);
+                }
+            }
+        }
+
+        #user-info {
+            display: flex;
+            align-items: center;
+            padding: 6px;
+            gap: 9px;
+            border: 1px solid var(--brdr-color);
+            border-radius: 9px;
+
+            #user-info__image {
+                #user-info__image__lttrs {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 36px;
+                    background-color: var(--accent);
+                    font-size: 12px;
+                    color: var(--white);
+                    cursor: default;
+                }
+            }
+
+            #user-info__data {
+                flex: 1;
+                display: grid;
+                min-width: 0;
+
+                #user-info__data__name,
+                #user-info__data__email {
+                    color: var(--ft-main);
+                    font-weight: 500;
+                    cursor: default;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                #user-info__data__name {
+                    font-size: 12px;
+                }
+
+                #user-info__data__email {
+                    font-size: 10px;
+                    opacity: .75;
                 }
             }
         }

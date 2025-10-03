@@ -76,10 +76,10 @@ function handleClick(event: Event) {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 9px;
-    min-width: 42px;
-    height: 42px;
-    padding: 0 11px;
+    gap: 6px;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
     border: 1px solid transparent;
     border-radius: 6px;
     cursor: pointer;
