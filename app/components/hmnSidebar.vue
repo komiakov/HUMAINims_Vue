@@ -121,7 +121,7 @@ onMounted(() => {
 
 #navigation {
     z-index: 99997;
-    transition: .3s;
+    transition: left .3s;
     border-left: 1px solid var(--brdr-color);
     box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.15);
 

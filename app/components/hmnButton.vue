@@ -100,6 +100,8 @@ function handleClick(event: Event) {
     }
 
     .hmn-button__label {
+        display: flex;
+        justify-content: start;
         flex: 1;
         padding: 0 9px;
         font-size: 12px;

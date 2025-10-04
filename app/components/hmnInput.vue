@@ -38,10 +38,11 @@ const emit = defineEmits(["update:modelValue"])
 
 <style lang="scss">
 .hmn-input {
+    flex: 1;
     display: inline-flex;
     align-items: center;
     gap: 9px;
-    height: 42px;
+    height: 36px;
     width: 100%;
     padding: 0 9px;
     border-radius: 6px;

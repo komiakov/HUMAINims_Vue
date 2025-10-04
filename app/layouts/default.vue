@@ -20,12 +20,17 @@ const { sidebarIsOpen } = useSidebar()
     background-color: var(--bg-main);
     padding-bottom: env(safe-area-inset-bottom);
 }
+@media (max-width: 480px) {
+    .kbd {
+        display: none;
+    }
+}
 
 @media (min-width: 960px) {
     #ims-page {
         display: flex;
         padding-left: 240px;
-        transition: .3s all;
+        transition: padding .3s;
 
         &.max {
             padding: 0;
