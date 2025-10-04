@@ -131,6 +131,7 @@ onMounted(() => {
         top: 0;
         left: 0;
         height: 100vh;
+        padding-bottom: env(safe-area-inset-bottom);
     }
 
     &.hide {
@@ -143,6 +144,7 @@ onMounted(() => {
         height: 100vh;
         width: 240px;
         padding: 12px;
+        padding-bottom: env(safe-area-inset-bottom);
         background-color: var(--bg-secondary);
 
         &,

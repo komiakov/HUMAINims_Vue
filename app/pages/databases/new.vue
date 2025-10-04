@@ -16,13 +16,13 @@ const { database } = useColumns()
             <HmnButton label="Edit form" icon-left="editForm" class="mbl-hide" :disabled="true" />
         </template>
     </HmnHeader>
+
+    <div id="ims-content-body">
+
+    </div>
 </template>
 
 <style lang="scss">
-#functional-panel__left {
-    flex: 1;
-}
-
 @media (max-width: 959px) {
     #functional-panel__left {
         flex: 1;
