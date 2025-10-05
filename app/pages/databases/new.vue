@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { database } = useColumns()
+const { database, addColumn } = useColumns()
+
+addColumn()
 </script>
 
 <template>
@@ -18,11 +20,17 @@ const { database } = useColumns()
     </HmnHeader>
 
     <div id="ims-content-body">
-
+        <div class="scroll">
+            <HmnColumn v-for="column in database.columns" :key="column.id" :columnId="column.id" />
+        </div>
     </div>
 </template>
 
 <style lang="scss">
+#ims-content-body {
+    padding: 12px;
+}
+
 @media (max-width: 959px) {
     #functional-panel__left {
         flex: 1;

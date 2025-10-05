@@ -40,7 +40,8 @@ onBeforeUnmount(() => {
 
         <transition name="dropdown-fade">
             <div class="hmn-select__body shadow" v-show="isOpen">
-                <div class="hmn-select__body_option" v-for="option in list" @click="selectOption(option); isOpen = !isOpen">
+                <div class="hmn-select__body_option" v-for="option in list"
+                    @click="selectOption(option); isOpen = !isOpen">
                     <span>{{ option.label }}</span>
                     <span v-if="option.code === modelValue" class="hmn-select__icon icon"
                         v-html="icons['selected']"></span>
@@ -81,8 +82,8 @@ onBeforeUnmount(() => {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 18px;
-        height: 18px;
+        width: 14px;
+        height: 14px;
 
         path {
             stroke: var(--accent);
@@ -98,7 +99,8 @@ onBeforeUnmount(() => {
         display: grid;
         position: absolute;
         gap: 9px;
-        top: 48px; left: 0;
+        top: 48px;
+        left: 0;
         min-width: 240px;
         padding: 6px;
         border: 1px solid var(--brdr-color);

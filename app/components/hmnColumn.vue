@@ -110,10 +110,13 @@ const trueFalse = ref([
 .hmn-column {
     display: grid;
     gap: 24px;
+    max-width: 960px;
+    width: 100%;
     padding: 9px;
-    border-radius: 9px;
+    margin: 0 auto;
+    border-radius: 6px;
     border: 1px solid var(--brdr-color);
-    background-color: var(--bg-item-main);
+    background-color: var(--bg-main);
 
     .hmn-column__header {
         .hmn-column__header__name {
@@ -153,7 +156,7 @@ const trueFalse = ref([
                 .input-block__label {
                     position: relative;
                     margin-left: 3px;
-                    font-size: 12px;
+                    font-size: 11px;
                     font-weight: 400;
                     color: var(--ft-main);
                     cursor: default;

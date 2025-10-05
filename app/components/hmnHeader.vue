@@ -13,7 +13,7 @@ const { toggleSidebar } = useSidebar()
         </section>
         <section>
             <slot name="header-right-btns"></slot>
-            <HmnButton id="global-search-btn" icon-left="search" label="Search..." class="mbl-hide">
+            <HmnButton id="global-search-btn" icon-left="search" label="Search..." class="mbl-hide" :disabled="true">
                 <template #kbd-slot>
                     <span class="kbd">⌘ F</span>
                 </template>
