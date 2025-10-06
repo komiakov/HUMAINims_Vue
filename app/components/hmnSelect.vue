@@ -73,8 +73,7 @@ onBeforeUnmount(() => {
     }
 
     .hmn-select__value {
-        font-size: 12px;
-        font-weight: 400;
+        @include tx-sm-regular;
         color: var(--ft-main);
     }
 
@@ -105,6 +104,7 @@ onBeforeUnmount(() => {
         padding: 6px;
         border: 1px solid var(--brdr-color);
         border-radius: 9px;
+        background-color: var(--bg-secondary);
 
         .hmn-select__body_option {
             display: flex;
@@ -115,8 +115,7 @@ onBeforeUnmount(() => {
             border-radius: 6px;
 
             :nth-child(1) {
-                font-size: 12px;
-                font-weight: 400;
+                @include tx-sm-regular;
                 color: var(--ft-main);
             }
 
@@ -124,18 +123,6 @@ onBeforeUnmount(() => {
                 background-color: var(--bg-item-main);
             }
         }
-    }
-}
-
-[data-theme="light"] {
-    .hmn-select__body {
-        background-color: var(--bg-main);
-    }
-}
-
-[data-theme="dark"] {
-    .hmn-select__body {
-        background-color: var(--bg-secondary);
     }
 }
 </style>

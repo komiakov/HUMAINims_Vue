@@ -105,20 +105,6 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-@mixin hover() {
-    &:hover {
-        @media (hover: hover) and (pointer: fine) {
-            @content;
-        }
-    }
-
-    &:active {
-        @media (hover: none) {
-            @content;
-        }
-    }
-}
-
 #navigation {
     z-index: 99997;
     transition: left .3s;
@@ -194,8 +180,7 @@ onMounted(() => {
 
             .navigation-link__label {
                 color: var(--ft-main);
-                font-size: 12px;
-                font-weight: 400;
+                @include tx-sm-regular;
             }
 
             @include hover() {

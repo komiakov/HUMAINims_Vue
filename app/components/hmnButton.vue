@@ -58,20 +58,6 @@ function handleClick(event: Event) {
 </template>
 
 <style lang="scss">
-@mixin hover() {
-    &:hover {
-        @media (hover: hover) and (pointer: fine) {
-            @content;
-        }
-    }
-
-    &:active {
-        @media (hover: none) {
-            @content;
-        }
-    }
-}
-
 .hmn-button {
     position: relative;
     display: flex;
@@ -104,8 +90,7 @@ function handleClick(event: Event) {
         justify-content: start;
         flex: 1;
         padding: 0 9px;
-        font-size: 12px;
-        font-weight: 400;
+        @include tx-sm-regular;
     }
 
     &.primary {
@@ -144,10 +129,8 @@ function handleClick(event: Event) {
 }
 
 @media (max-width: 719px) {
-    .hmn-button.mbl-hide {
-        .hmn-button__label {
-            display: none;
-        }
+    .hmn-button.mbl-hide .hmn-button__label{
+        display: none;
     }
 }
 </style>

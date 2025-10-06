@@ -120,9 +120,7 @@ const trueFalse = ref([
 
     .hmn-column__header {
         .hmn-column__header__name {
-            position: relative;
-            font-size: 14px;
-            font-weight: 400;
+            @include tx-sm-regular;
             color: var(--ft-main);
             cursor: default;
         }
@@ -156,8 +154,7 @@ const trueFalse = ref([
                 .input-block__label {
                     position: relative;
                     margin-left: 3px;
-                    font-size: 11px;
-                    font-weight: 400;
+                    @include tx-xs-regular;
                     color: var(--ft-main);
                     cursor: default;
                     opacity: .75;
@@ -168,21 +165,15 @@ const trueFalse = ref([
 }
 
 @media (max-width: 720px) {
-    .hmn-column .hmn-column__body {
-        .row {
-            display: grid;
-            gap: 24px;
-        }
+    .hmn-column .hmn-column__body .row {
+        display: grid;
+        gap: 24px;
     }
 }
 
 @media (min-width: 721px) {
-    .hmn-column .hmn-column__body {
-        .row {
-            .input-block__half {
-                width: calc(50% - 6px) !important;
-            }
-        }
+    .hmn-column .hmn-column__body .row .input-block__half {
+        width: calc(50% - 6px) !important;
     }
 }
 </style>

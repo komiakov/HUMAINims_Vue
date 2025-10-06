@@ -30,7 +30,7 @@ const { toggleSidebar } = useSidebar()
     </div>
 </template>
 
-<style>
+<style lang="scss">
 header {
     background: var(--bg-secondary);
     padding: 12px;
@@ -45,8 +45,7 @@ header {
         flex: 1;
 
         #header__page-name {
-            font-size: 16px;
-            font-weight: 500;
+            @include tx-md-bold;
             color: var(--ft-main);
             cursor: default;
         }
@@ -61,7 +60,7 @@ header {
 
 @media (min-width: 720px) {
     #global-search-btn {
-       min-width: 240px;
+        min-width: 240px;
     }
 }
 </style>
