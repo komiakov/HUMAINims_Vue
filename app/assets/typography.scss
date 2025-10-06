@@ -3,6 +3,11 @@
   font-weight: 400;
 }
 
+@mixin tx-bt-regular {
+  font-size: 11px;
+  font-weight: 400;
+}
+
 @mixin tx-sm-regular {
   font-size: 12px;
   font-weight: 400;

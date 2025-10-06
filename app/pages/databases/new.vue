@@ -17,6 +17,7 @@ onBeforeUnmount(()=>{
         </template>
         <template #header-page-name>Create database</template>
         <template #fp-left>
+            <HmnButton icon-left="add" type="accent" @click="addColumn()" />
             <HmnInput v-model="database.name.value" placeholder="Enter database name..." />
         </template>
         <template #fp-right>

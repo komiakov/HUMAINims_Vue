@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useIcons } from "@/utils/useIcons";
-
 const icons = useIcons()
 
 const props = defineProps({
@@ -90,7 +88,7 @@ function handleClick(event: Event) {
         justify-content: start;
         flex: 1;
         padding: 0 9px;
-        @include tx-sm-regular;
+        @include tx-bt-regular;
     }
 
     &.primary {

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const icons = useIcons()
 
 const { database, getColumnById, deleteColumn } = useColumns()
 
@@ -108,6 +109,7 @@ const trueFalse = ref([
 
 <style lang="scss">
 .hmn-column {
+    position: relative;
     display: grid;
     gap: 24px;
     max-width: 960px;
