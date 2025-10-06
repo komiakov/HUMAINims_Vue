@@ -1,7 +1,13 @@
 <script setup lang="ts">
-const { database, addColumn } = useColumns()
+const { database, addColumn, resetDatabase } = useColumns()
 
-addColumn()
+onBeforeMount(()=>{
+    addColumn()
+})
+
+onBeforeUnmount(()=>{
+    resetDatabase()
+})
 </script>
 
 <template>
@@ -21,7 +27,9 @@ addColumn()
 
     <div id="ims-content-body">
         <div class="scroll">
-            <HmnColumn v-for="column in database.columns" :key="column.id" :columnId="column.id" />
+            <client-only>
+                <HmnColumn v-for="column in database.columns" :key="column.id" :columnId="column.id" />
+            </client-only>
         </div>
     </div>
 </template>
