@@ -24,7 +24,6 @@ const { sidebarIsOpen } = useSidebar()
     position: relative;
     width: 100vw;
     background-color: var(--bg-main);
-    padding-bottom: env(safe-area-inset-bottom);
 
     #ims-content {
         display: grid;
