@@ -54,7 +54,7 @@ onBeforeUnmount(() => {
 <style lang="scss">
 .hmn-select {
     @include item-def-format();
-    
+
     position: relative;
     display: flex;
     align-items: center;
@@ -73,7 +73,7 @@ onBeforeUnmount(() => {
     }
 
     .hmn-select__value {
-        @include tx-sm-regular;
+        @include tx-btn-bold;
         color: var(--ft-main);
     }
 
@@ -115,7 +115,7 @@ onBeforeUnmount(() => {
             border-radius: 6px;
 
             :nth-child(1) {
-                @include tx-sm-regular;
+                @include tx-btn-bold;
                 color: var(--ft-main);
             }
 

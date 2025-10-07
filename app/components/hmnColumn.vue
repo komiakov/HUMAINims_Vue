@@ -116,9 +116,9 @@ const trueFalse = ref([
     width: 100%;
     padding: 9px;
     margin: 0 auto;
-    border-radius: 6px;
+    border-radius: 9px;
     border: 1px solid var(--brdr-color);
-    background-color: var(--bg-main);
+    background-color: var(--bg-secondary);
 
     .hmn-column__header {
         .hmn-column__header__name {

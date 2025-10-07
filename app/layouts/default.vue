@@ -33,9 +33,6 @@ const { sidebarIsOpen } = useSidebar()
         #ims-content-body {
             height: calc(100% - 24px);
             margin: 12px;
-            background-color: var(--bg-secondary);
-            border-radius: 9px;
-            border: 1px solid var(--brdr-color);
         }
     }
 }
