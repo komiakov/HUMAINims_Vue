@@ -64,7 +64,7 @@ function handleClick(event: Event) {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    padding: 0 8px;
+    padding: 0 10px;
     border: 1px solid transparent;
     cursor: pointer;
     overflow: hidden;

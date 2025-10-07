@@ -139,6 +139,8 @@ onMounted(() => {
         padding: 12px;
         background-color: var(--bg-secondary);
 
+        padding-bottom: env(safe-area-inset-bottom);
+
         @include desktop-min(960px) {
             width: 240px;
             #sidebar-close-btn-section {

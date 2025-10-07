@@ -51,7 +51,7 @@ header {
 
         #global-search-btn {
             @include desktop-min(720px) {
-                min-width: 240px;
+                min-width: 180px;
             }
         }
 
