@@ -40,6 +40,9 @@ const trueFalse = ref([
         <div className="hmn-column__header container-flex">
             <section>
                 <HmnButton icon-left="move" class="move" />
+                <span class="hmn-column__header__type" id="text" v-if="column.type.value === 'text'">abc</span>
+                <span class="hmn-column__header__type" id="number" v-if="column.type.value === 'number'">123</span>
+                <span class="hmn-column__header__type" id="boolean" v-if="column.type.value === 'boolean'">t/f</span>
                 <span className="hmn-column__header__name">
                     {{ column.name.value }}
                 </span>
@@ -121,9 +124,47 @@ const trueFalse = ref([
     background-color: var(--bg-secondary);
 
     .hmn-column__header {
+        .hmn-column__header__type {
+            border-radius: 4px;
+            cursor: default;
+
+            &#text,
+            &#number,
+            &#boolean {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 24px;
+                width: 60px;
+                @include tx-xs-regular;
+                transition: .3s all;
+            }
+
+            &#text {
+                color: var(--warning);
+                background-color: var(--warning-op-25);
+                border: 1px solid var(--warning);
+            }
+
+            &#number {
+                color: var(--info);
+                background-color: var(--info-op-25);
+                border: 1px solid var(--info);
+            }
+
+            &#boolean {
+                color: var(--success);
+                background-color: var(--success-op-25);
+                border: 1px solid var(--success);
+            }
+        }
+
         .hmn-column__header__name {
             @include tx-sm-regular;
             color: var(--ft-main);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             cursor: default;
         }
 
@@ -160,7 +201,7 @@ const trueFalse = ref([
 
                 &.input-block__half {
                     @include desktop-min(720px) {
-                         width: calc(50% - 6px) !important;
+                        width: calc(50% - 6px) !important;
                     }
                 }
 

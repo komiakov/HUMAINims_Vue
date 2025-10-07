@@ -1,9 +1,14 @@
 @mixin tx-xs-regular {
   font-size: 10px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 @mixin tx-btn-bold {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+@mixin tx-inpt-bold {
   font-size: 12px;
   font-weight: 400;
 }

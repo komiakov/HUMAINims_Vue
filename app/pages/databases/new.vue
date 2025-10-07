@@ -40,10 +40,6 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss">
-#ims-content-body {
-    padding: 12px;
-}
-
 #functional-panel__left {
     @include desktop-min(960px) {
         flex: .5;

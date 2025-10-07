@@ -59,7 +59,7 @@ const emit = defineEmits(["update:modelValue"])
 
     input {
         flex: 1;
-        @include tx-btn-bold;
+        @include tx-inpt-bold;
         color: var(--ft-main);
     }
 

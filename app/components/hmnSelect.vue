@@ -73,7 +73,7 @@ onBeforeUnmount(() => {
     }
 
     .hmn-select__value {
-        @include tx-btn-bold;
+        @include tx-inpt-bold;
         color: var(--ft-main);
     }
 

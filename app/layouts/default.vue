@@ -30,8 +30,8 @@ const { sidebarIsOpen } = useSidebar()
         grid-template-rows: auto auto 1fr;
 
         #ims-content-body {
-            height: calc(100% - 24px);
-            margin: 12px;
+            height: calc(100% - 18px);
+            margin: 12px 12px 6px 12px;
         }
     }
 }
