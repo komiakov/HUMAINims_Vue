@@ -180,7 +180,7 @@ onMounted(() => {
 
             .navigation-link__label {
                 color: var(--ft-main);
-                @include tx-sm-regular;
+                @include tx-btn-bold;
             }
 
             @include hover() {

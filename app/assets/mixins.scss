@@ -1,3 +1,7 @@
+:root {
+  --item-radius: 6px;
+}
+
 @mixin hover() {
     &:hover {
         @media (hover: hover) and (pointer: fine) {
@@ -10,4 +14,14 @@
             @content;
         }
     }
+}
+
+@mixin item-size() {
+    height: 36px;
+    min-width: 36px;
+}
+
+@mixin item-def-format() {
+    @include item-size();
+    border-radius: var(--item-radius);
 }

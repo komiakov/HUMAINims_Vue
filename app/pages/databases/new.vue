@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import draggable from 'vuedraggable'
+
 const { database, addColumn, resetDatabase } = useColumns()
 
-onBeforeMount(()=>{
+onMounted(() => {
     addColumn()
 })
 
-onBeforeUnmount(()=>{
+onBeforeUnmount(() => {
     resetDatabase()
 })
 </script>
@@ -17,7 +19,7 @@ onBeforeUnmount(()=>{
         </template>
         <template #header-page-name>Create database</template>
         <template #fp-left>
-            <HmnButton icon-left="add" type="accent" @click="addColumn()" />
+            <HmnButton icon-left="add" label="Add column" type="accent mbl-hide" @click="addColumn()" />
             <HmnInput v-model="database.name.value" placeholder="Enter database name..." />
         </template>
         <template #fp-right>
@@ -27,11 +29,13 @@ onBeforeUnmount(()=>{
     </HmnHeader>
 
     <div id="ims-content-body">
-        <div class="scroll">
-            <client-only>
-                <HmnColumn v-for="column in database.columns" :key="column.id" :columnId="column.id" />
-            </client-only>
-        </div>
+        <draggable class="scroll" v-model="database.columns" item-key="id" animation="200" handle=".move">
+
+            <template #item="{ element }">
+                <HmnColumn :columnId="element.id" />
+            </template>
+
+        </draggable>
     </div>
 </template>
 
@@ -47,7 +51,7 @@ onBeforeUnmount(()=>{
 }
 
 @media (min-width: 960px) {
-    #functional-panel__left{
+    #functional-panel__left {
         flex: .5;
     }
 }

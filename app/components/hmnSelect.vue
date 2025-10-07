@@ -53,16 +53,16 @@ onBeforeUnmount(() => {
 
 <style lang="scss">
 .hmn-select {
+    @include item-def-format();
+    
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 9px;
-    height: 42px;
     width: 100%;
     padding: 0 9px;
     border: 1px solid var(--brdr-color);
-    border-radius: 6px;
     transition: .3s all;
     background-color: var(--bg-item-main);
     transition: .3s all;
@@ -100,7 +100,7 @@ onBeforeUnmount(() => {
         gap: 9px;
         top: 48px;
         left: 0;
-        min-width: 240px;
+        min-width: 180px;
         padding: 6px;
         border: 1px solid var(--brdr-color);
         border-radius: 9px;
@@ -110,7 +110,7 @@ onBeforeUnmount(() => {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 36px;
+            height: 30px;
             padding: 0 12px;
             border-radius: 6px;
 
