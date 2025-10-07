@@ -38,17 +38,23 @@ header {
 
     section {
         gap: 18px;
-    }
 
-    section:nth-child(1) {
-        gap: 12px;
-        flex: 1;
+        &:nth-child(1) {
+            flex: 1;
+        }
 
         #header__page-name {
             @include tx-md-bold;
             color: var(--ft-main);
             cursor: default;
         }
+
+        #global-search-btn {
+            @include desktop-min(720px) {
+                min-width: 240px;
+            }
+        }
+
     }
 }
 
@@ -56,11 +62,5 @@ header {
     background: var(--bg-secondary);
     padding: 12px;
     border-bottom: 1px solid var(--brdr-color);
-}
-
-@media (min-width: 720px) {
-    #global-search-btn {
-        min-width: 240px;
-    }
 }
 </style>

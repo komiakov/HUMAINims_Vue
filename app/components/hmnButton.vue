@@ -151,11 +151,11 @@ function handleClick(event: Event) {
             }
         }
     }
-}
 
-@media (max-width: 719px) {
-    .hmn-button.mbl-hide .hmn-button__label {
-        display: none;
+    @include desktop-max(719px) {
+        &.mbl-hide .hmn-button__label {
+            display: none;
+        }
     }
 }
 </style>

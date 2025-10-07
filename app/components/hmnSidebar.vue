@@ -119,8 +119,16 @@ onMounted(() => {
         height: 100vh;
     }
 
-    &.hide {
-        left: -250px;
+    @include desktop-min(960px) {
+        &.hide {
+            left: -250px;
+        }
+    }
+
+    @include desktop-max(959px) {
+        &.hide {
+            left: -100vw;
+        }
     }
 
     #navigation-content {
@@ -130,6 +138,17 @@ onMounted(() => {
         width: 240px;
         padding: 12px;
         background-color: var(--bg-secondary);
+
+        @include desktop-min(960px) {
+            width: 240px;
+            #sidebar-close-btn-section {
+                display: none;
+            }
+        }
+
+        @include desktop-max(959px) {
+            width: 300px;
+        }
 
         &,
         #navigation-top,
@@ -247,30 +266,6 @@ onMounted(() => {
                     opacity: .75;
                 }
             }
-        }
-    }
-}
-
-@media (min-width: 960px) {
-    #navigation {
-        #sidebar-close-btn-section {
-            display: none;
-        }
-
-        #navigation-content {
-            width: 240px;
-        }
-    }
-}
-
-@media (max-width: 959px) {
-    #navigation {
-        &.hide {
-            left: -100vw;
-        }
-
-        #navigation-content {
-            width: 300px;
         }
     }
 }

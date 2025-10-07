@@ -148,10 +148,21 @@ const trueFalse = ref([
             align-items: start;
             gap: 9px;
 
+            @include desktop-max(719px) {
+                display: grid;
+                gap: 24px;
+            }
+
             .input-block {
                 display: grid;
                 gap: 3px;
                 width: 100%;
+
+                &.input-block__half {
+                    @include desktop-min(720px) {
+                         width: calc(50% - 6px) !important;
+                    }
+                }
 
                 .input-block__label {
                     position: relative;
@@ -163,19 +174,6 @@ const trueFalse = ref([
                 }
             }
         }
-    }
-}
-
-@media (max-width: 720px) {
-    .hmn-column .hmn-column__body .row {
-        display: grid;
-        gap: 24px;
-    }
-}
-
-@media (min-width: 721px) {
-    .hmn-column .hmn-column__body .row .input-block__half {
-        width: calc(50% - 6px) !important;
     }
 }
 </style>

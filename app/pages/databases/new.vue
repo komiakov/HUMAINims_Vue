@@ -44,15 +44,13 @@ onBeforeUnmount(() => {
     padding: 12px;
 }
 
-@media (max-width: 959px) {
-    #functional-panel__left {
-        flex: 1;
-    }
-}
-
-@media (min-width: 960px) {
-    #functional-panel__left {
+#functional-panel__left {
+    @include desktop-min(960px) {
         flex: .5;
+    }
+
+    @include desktop-max(959px) {
+        flex: 1;
     }
 }
 </style>

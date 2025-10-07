@@ -1,6 +1,8 @@
-:root {
-  --item-radius: 6px;
-}
+$item-radius: 6px;
+
+$breakpoint-desktop: 960px;
+$breakpoint-tablet: 719px;
+$breakpoint-mobile: 449px;
 
 @mixin hover() {
     &:hover {
@@ -23,5 +25,23 @@
 
 @mixin item-def-format() {
     @include item-size();
-    border-radius: var(--item-radius);
+    border-radius: $item-radius;
+}
+
+@mixin desktop-between($min, $max) {
+  @media (min-width: #{$min}) and (max-width: #{$max}) {
+    @content;
+  }
+}
+
+@mixin desktop-max($max) {
+  @media (max-width: #{$max}) {
+    @content;
+  }
+}
+
+@mixin desktop-min($min) {
+  @media (min-width: #{$min}) {
+    @content;
+  }
 }
