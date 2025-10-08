@@ -36,11 +36,7 @@ const { sidebarIsOpen } = useSidebar()
     }
 }
 
-@media (max-width: 480px) {
-    .kbd {
-        display: none;
-    }
-}
+
 
 @media (min-width: 960px) {
     #ims-page {

@@ -115,7 +115,7 @@ onBeforeUnmount(() => {
             border-radius: 6px;
 
             :nth-child(1) {
-                @include tx-btn-bold;
+                @include tx-btn-regular;
                 color: var(--ft-main);
             }
 

@@ -5,7 +5,7 @@ const { toggleSidebar } = useSidebar()
 <template>
     <header class="container-flex">
         <section>
-            <HmnButton id="toggle-sidebar" icon-left="sidebar" @click="toggleSidebar" />
+            <HmnButton id="toggle-sidebar" icon-left="sidebar" @click="toggleSidebar" type="primary brdr" />
             <slot name="header-left-btns"></slot>
             <span id="header__page-name">
                 <slot name="header-page-name"></slot>
@@ -13,8 +13,8 @@ const { toggleSidebar } = useSidebar()
         </section>
         <section>
             <slot name="header-right-btns"></slot>
-            <HmnButton id="global-search-btn" icon-left="search" label="Search..." class="mbl-hide" :disabled="true">
-                <template #kbd-slot>
+            <HmnButton id="global-search-btn" icon-left="search" label="Search..." class="mbl-hide" type="primary brdr" :disabled="true">
+                <template #indicatior-slot>
                     <span class="kbd">⌘ F</span>
                 </template>
             </HmnButton>

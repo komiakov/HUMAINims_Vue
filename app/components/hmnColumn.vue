@@ -136,7 +136,7 @@ const trueFalse = ref([
                 justify-content: center;
                 height: 24px;
                 width: 60px;
-                @include tx-xs-regular;
+                @include tx-xs-bold;
                 transition: .3s all;
             }
 
@@ -208,7 +208,7 @@ const trueFalse = ref([
                 .input-block__label {
                     position: relative;
                     margin-left: 3px;
-                    @include tx-xs-regular;
+                    @include tx-xs-bold;
                     color: var(--ft-main);
                     cursor: default;
                     opacity: .75;
