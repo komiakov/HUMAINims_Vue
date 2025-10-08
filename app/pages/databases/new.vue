@@ -24,7 +24,7 @@ onBeforeUnmount(() => {
         </template>
         <template #fp-right>
             <HmnButton icon-left="translator" :disabled="true" />
-            <HmnButton label="Edit form" icon-left="editForm" class="mbl-hide" :disabled="true" />
+            <HmnButton label="Edit form" icon-left="editForm" class="mbl-hide" type="primary brdr" :disabled="true" />
         </template>
     </HmnHeader>
 

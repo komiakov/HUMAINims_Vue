@@ -48,7 +48,6 @@ const trueFalse = ref([
                 </span>
             </section>
             <section>
-                <HmnButton icon-left="duplicate" type="warning" :disabled="true" />
                 <HmnButton icon-left="delete" type="alert" @click="deleteColumn(column.id)"
                     :disabled="database.columns.length === 1 ? true : false" />
                 <HmnButton icon-left="arrowDown" type="accent" @click="isOpen = !isOpen"
