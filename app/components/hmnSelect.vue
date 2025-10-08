@@ -62,7 +62,7 @@ onBeforeUnmount(() => {
     gap: 9px;
     width: 100%;
     padding: 0 9px;
-    border: 1px solid var(--brdr-color);
+    @include border();
     transition: .3s all;
     background-color: var(--bg-item-main);
     transition: .3s all;
@@ -78,9 +78,7 @@ onBeforeUnmount(() => {
     }
 
     .hmn-select__icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
+        @include inline-center();
         width: 14px;
         height: 14px;
 
@@ -102,7 +100,7 @@ onBeforeUnmount(() => {
         left: 0;
         min-width: 180px;
         padding: 6px;
-        border: 1px solid var(--brdr-color);
+        @include border();
         border-radius: 9px;
         background-color: var(--bg-secondary);
 

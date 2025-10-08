@@ -120,7 +120,7 @@ const trueFalse = ref([
     padding: 9px;
     margin: 0 auto;
     border-radius: 9px;
-    border: 1px solid var(--brdr-color);
+    @include border();
     background-color: var(--bg-secondary);
 
     .hmn-column__header {
@@ -131,9 +131,7 @@ const trueFalse = ref([
             &#text,
             &#number,
             &#boolean {
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                @include inline-center();
                 height: 24px;
                 width: 60px;
                 @include tx-xs-bold;

@@ -46,7 +46,7 @@ const emit = defineEmits(["update:modelValue"])
     gap: 9px;
     width: 100%;
     padding: 0 9px;
-    border: 1px solid var(--brdr-color);
+    @include border();
     transition: .3s all;
     background-color: var(--bg-item-main);
 

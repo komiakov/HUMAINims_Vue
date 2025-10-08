@@ -64,7 +64,7 @@ onBeforeUnmount(() => {
         top: 42px;
         min-width: 240px;
         padding: 6px;
-        border: 1px solid var(--brdr-color);
+        @include border();
         border-radius: 9px;
         background-color: var(--bg-secondary);
 
