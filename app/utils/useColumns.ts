@@ -1,3 +1,5 @@
+const nameRegex = /^[A-Za-z][A-Za-z0-9_]{2,36}$/;
+
 interface Column {
   id: number;
   name: { value: string; isValid: boolean };
@@ -56,6 +58,17 @@ function resetDatabase() {
   database.languages = ["en"];
   database.name.value = "New database";
 }
+
+watch(
+  () => database.columns.map(col => col.name.value),
+  (newNames) => {
+    newNames.forEach((name, index) => {
+      const isValid = nameRegex.test(name);
+      database.columns[index]!.name.isValid = isValid;
+    });
+  },
+  { deep: true }
+);
 
 export function useColumns() {
   return {

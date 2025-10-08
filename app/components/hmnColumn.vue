@@ -1,6 +1,4 @@
 <script setup lang="ts">
-const icons = useIcons()
-
 const { database, getColumnById, deleteColumn } = useColumns()
 
 const isOpen = ref(false)
@@ -59,7 +57,8 @@ const trueFalse = ref([
             <div class="row">
                 <div class="input-block input-block__half">
                     <span class="input-block__label"><span class="required">*</span> Column name</span>
-                    <HmnInput placeholder="Required" v-model="column.name.value" />
+                    <HmnInput placeholder="Required" v-model="column.name.value"
+                        :errorMessage="!column.name.isValid ? 'Name must start with a letter and contain 3–37 characters total (letters, digits, and underscores only).' : ''" />
                 </div>
             </div>
             <div class="row">
