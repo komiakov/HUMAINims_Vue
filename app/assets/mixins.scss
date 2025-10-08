@@ -1,9 +1,5 @@
 $item-radius: 6px;
 
-$breakpoint-desktop: 960px;
-$breakpoint-tablet: 719px;
-$breakpoint-mobile: 449px;
-
 @mixin hover() {
     &:hover {
         @media (hover: hover) and (pointer: fine) {
@@ -18,9 +14,17 @@ $breakpoint-mobile: 449px;
     }
 }
 
+@mixin inline-center() {
+  display: flex; align-items: center; justify-content: center;
+}
+
 @mixin item-size() {
     height: 36px;
     min-width: 36px;
+}
+
+@mixin border() {
+  border: 1px solid var(--brdr-color);
 }
 
 @mixin item-def-format() {

@@ -72,8 +72,9 @@ select {
 button{
   background-color: transparent; outline: none; border: none;
 }
-a{
+a, a:visited, a:link, a:active{
     text-decoration: none;
+    color: inherit;
 }
 
 input{

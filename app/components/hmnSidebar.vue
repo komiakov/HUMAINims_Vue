@@ -12,8 +12,8 @@ const topLinks = [
     { to: '', icon: 'notification', label: 'Notifications' },
     { type: 'divider' },
     { to: '/', icon: 'dashboard', label: 'Dashboard' },
-    { to: '/databases', icon: 'database', label: 'Databases' },
-    { to: '/reports', icon: 'report', label: 'Reports' },
+    { to: '/databases', icon: 'database', label: 'Databases', indicator: 0 },
+    { to: '/reports', icon: 'report', label: 'Reports', indicator: 0 },
 ]
 
 const bottomLinks = [
@@ -23,6 +23,7 @@ const bottomLinks = [
     { to: '/support', icon: 'support', label: 'Support' },
     { type: 'divider' },
     { to: '/settings', icon: 'settings', label: 'Settings' },
+    { type: 'divider' },
 ]
 
 const isActive = (path: string) => {
@@ -55,50 +56,45 @@ onMounted(() => {
 
 <template>
     <nav id="navigation" ref="dropdownRef" :class="{ 'hide': !sidebarIsOpen }">
-        <div id="navigation-content">
-            <div id="navigation-top">
-                <div id="navigation-header" class="container-flex">
-                    <section>
-                        <NuxtLink to="/" id="logo">
-                            <span class="icon" v-html="icons['logo']"></span>
-                            <span id="logo__label">HUMANims</span>
-                        </NuxtLink>
-                    </section>
-                    <section id="sidebar-close-btn-section">
-                        <HmnButton id="sidebar-close-btn" icon-left="close" @click="toggleSidebar" />
-                    </section>
-                </div>
-                <hr>
-                <template v-for="(link, index) in topLinks" :key="index">
-                    <hr v-if="link.type === 'divider'" />
-                    <NuxtLink v-else :to="link.to" class="navigation-link" :class="{ active: isActive(link.to!) }"
-                        @click="closeSidebarMobile">
-                        <span class="icon" v-html="icons[link.icon!]"></span>
-                        <span class="navigation-link__label">{{ link.label }}</span>
+        <div id="navigation-top">
+            <div id="navigation-header" class="container-flex">
+                <section>
+                    <NuxtLink to="/" id="logo">
+                        <span class="icon" v-html="icons['logo']"></span>
+                        <span id="logo__label">HUMANims</span>
                     </NuxtLink>
-                </template>
+                </section>
+                <section id="sidebar-close-btn-section">
+                    <HmnButton id="sidebar-close-btn" icon-left="close" @click="toggleSidebar" />
+                </section>
             </div>
+            <hr>
+            <template v-for="(link, index) in topLinks" :key="index">
+                <hr v-if="link.type === 'divider'" />
+                <HmnButton v-else :icon-left="link.icon" :label="link.label" :link="link.to" 
+                    :type="isActive(link.to) ? 'accent' : 'primary'" @click="closeSidebarMobile">
+                    <template #indicatior-slot>
+                        <span v-if="link.indicator != null" class="indicator">{{ link.indicator }}</span>
+                    </template>
+                </HmnButton>
+            </template>
+        </div>
 
-            <div id="navigation-bottom">
-                <template v-for="(link, index) in bottomLinks" :key="index">
-                    <hr v-if="link.type === 'divider'" />
-                    <NuxtLink v-else :to="link.to" class="navigation-link" :class="{ active: isActive(link.to!) }"
-                        @click="closeSidebarMobile">
-                        <span class="icon" v-html="icons[link.icon!]"></span>
-                        <span class="navigation-link__label">{{ link.label }}</span>
-                    </NuxtLink>
-                </template>
-                <hr>
-                <div id="user-info">
-                    <div id="user-info__image">
-                        <span id="user-info__image__lttrs">AK</span>
-                    </div>
-                    <div id="user-info__data">
-                        <span id="user-info__data__name">Andrii KOMIAKOV</span>
-                        <span id="user-info__data__email">andrii.komiakov@icloud.com</span>
-                    </div>
-                    <HmnButton icon-left="logOut" />
+        <div id="navigation-bottom">
+            <template v-for="(link, index) in bottomLinks" :key="index">
+                <hr v-if="link.type === 'divider'" />
+                <HmnButton v-else :icon-left="link.icon" :label="link.label" :link="link.to"
+                    :type="isActive(link.to) ? 'accent' : 'primary'" @click="closeSidebarMobile" />
+            </template>
+            <div id="user-info">
+                <div id="user-info__image">
+                    <span id="user-info__image__lttrs">AK</span>
                 </div>
+                <div id="user-info__data">
+                    <span id="user-info__data__name">Andrii KOMIAKOV</span>
+                    <span id="user-info__data__email">andrii.komiakov@icloud.com</span>
+                </div>
+                <HmnButton icon-left="logOut" />
             </div>
         </div>
     </nav>
@@ -106,165 +102,109 @@ onMounted(() => {
 
 <style lang="scss">
 #navigation {
-    z-index: 99997;
-    transition: left .3s;
-    border-left: 1px solid var(--brdr-color);
+    z-index: 99999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding: 12px;
     box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.15);
-
-    &,
-    #navigation-content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100vh;
-    }
+    background-color: var(--bg-secondary);
+    transition: left .3s;
 
     @include desktop-min(960px) {
+        width: 240px;
+
         &.hide {
             left: -250px;
+        }
+
+        #sidebar-close-btn-section {
+            display: none;
         }
     }
 
     @include desktop-max(959px) {
+        width: 300px;
+
         &.hide {
             left: -100vw;
         }
     }
 
-    #navigation-content {
-        position: relative;
-        z-index: 99999;
-        height: 100vh;
-        width: 240px;
-        padding: 12px;
-        background-color: var(--bg-secondary);
+    &,
+    #navigation-top,
+    #navigation-bottom {
+        display: grid;
+        align-content: space-between;
+        gap: 12px;
 
-        @include desktop-min(960px) {
-            width: 240px;
-            #sidebar-close-btn-section {
-                display: none;
-            }
-        }
-
-        @include desktop-max(959px) {
-            width: 300px;
-        }
-
-        &,
-        #navigation-top,
-        #navigation-bottom {
-            display: grid;
-            align-content: space-between;
-            gap: 12px;
-
-            #logo,
-            .navigation-link {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-            }
-
-            #logo {
-                .icon {
-                    width: 36px;
-                    height: 36px;
-                    background-color: var(--accent);
-                    border-radius: 6px;
-
-                    svg path {
-                        fill: var(--white);
-                    }
-                }
-
-                #logo__label {
-                    font-size: 14px;
-                    font-weight: 500;
-                    color: var(--ft-main);
-                }
-            }
-        }
-
-        .navigation-link {
-            height: 36px;
-            min-width: 36px;
-            padding: 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: 0.18s all;
-
-            .icon svg path {
-                stroke: var(--ft-main);
-                transition: stroke 0.18s;
-            }
-
-            .navigation-link__label {
-                color: var(--ft-main);
-                @include tx-btn-bold;
-            }
-
-            @include hover() {
-                background: var(--bg-item-main);
-            }
-
-            &.active {
-                background: var(--accent);
-
-                .icon svg path {
-                    stroke: var(--white);
-                }
-
-                .navigation-link__label {
-                    color: var(--white);
-                }
-            }
-        }
-
-        #user-info {
+        #logo {
             display: flex;
             align-items: center;
-            padding: 6px;
-            gap: 9px;
-            border: 1px solid var(--brdr-color);
-            border-radius: 9px;
+            gap: 12px;
 
-            #user-info__image {
-                #user-info__image__lttrs {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 36px;
-                    height: 36px;
-                    border-radius: 36px;
-                    background-color: var(--accent);
-                    font-size: 12px;
-                    color: var(--white);
-                    cursor: default;
+            .icon {
+                width: 36px;
+                height: 36px;
+                background-color: var(--accent);
+                border-radius: 6px;
+
+                svg path {
+                    fill: var(--white);
                 }
             }
 
-            #user-info__data {
-                flex: 1;
-                display: grid;
-                min-width: 0;
+            #logo__label {
+                font-size: 14px;
+                font-weight: 500;
+                color: var(--ft-main);
+            }
+        }
+    }
 
-                #user-info__data__name,
-                #user-info__data__email {
-                    color: var(--ft-main);
-                    font-weight: 500;
-                    cursor: default;
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
+    #user-info {
+        display: flex;
+        align-items: center;
+        padding: 6px;
+        gap: 9px;
+        @include border();
+        border-radius: 9px;
 
-                #user-info__data__name {
-                    font-size: 12px;
-                }
+        #user-info__image {
+            #user-info__image__lttrs {
+                @include inline-center();
+                width: 36px;
+                height: 36px;
+                border-radius: 36px;
+                background-color: var(--accent);
+                font-size: 12px;
+                color: var(--white);
+                cursor: default;
+            }
+        }
 
-                #user-info__data__email {
-                    font-size: 10px;
-                    opacity: .75;
-                }
+        #user-info__data {
+            flex: 1;
+            display: grid;
+            min-width: 0;
+
+            #user-info__data__name,
+            #user-info__data__email {
+                color: var(--ft-main);
+                cursor: default;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            #user-info__data__name {
+                @include tx-sm-regular();
+            }
+
+            #user-info__data__email {
+                @include tx-xs-bold();
+                opacity: .75;
             }
         }
     }

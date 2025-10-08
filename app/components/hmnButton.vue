@@ -46,12 +46,13 @@ function handleClick(event: Event) {
         <span v-if="iconLeft" class="hmn-button__icon icon" v-html="icons[iconLeft]"></span>
         <span v-if="label" class="hmn-button__label">{{ label }}</span>
         <span v-if="iconRight" class="hmn-button__icon icon" v-html="icons[iconRight]"></span>
+        <slot name="indicatior-slot"></slot>
     </NuxtLink>
     <button v-else class="hmn-button" :class="[{ 'disabled': disabled }, type]" @click="handleClick">
         <span v-if="iconLeft" class="hmn-button__icon icon" v-html="icons[iconLeft]"></span>
         <span v-if="label" class="hmn-button__label">{{ label }}</span>
         <span v-if="iconRight" class="hmn-button__icon icon" v-html="icons[iconRight]"></span>
-        <slot name="kbd-slot"></slot>
+        <slot name="indicatior-slot"></slot>
     </button>
 </template>
 
@@ -83,21 +84,29 @@ function handleClick(event: Event) {
     }
 
     .hmn-button__label {
+        flex: 1;
+    }
+    .indicator {
+        opacity: .5;
+    }
+
+    .hmn-button__label, .indicator {
         display: flex;
         justify-content: start;
-        flex: 1;
         padding: 0 6px;
-        @include tx-btn-bold;
+        @include tx-btn-regular;
     }
 
     &.primary {
-        border-color: var(--brdr-color);
-
+        color: var(--ft-main);
+        &.brdr {
+            border: 1px solid var(--brdr-color);
+        }
         .hmn-button__icon svg path {
             stroke: var(--accent);
         }
 
-        .hmn-button__label {
+        .hmn-button__label, .indicator {
             color: var(--ft-main);
         }
 
@@ -113,7 +122,7 @@ function handleClick(event: Event) {
             stroke: var(--white);
         }
 
-        .hmn-button__label {
+        .hmn-button__label, .indicator {
             color: var(--white);
         }
     }
@@ -124,7 +133,7 @@ function handleClick(event: Event) {
             stroke: var(--danger);
         }
 
-        .hmn-button__label {
+        .hmn-button__label, .indicator {
             color: var(--danger);
         }
 
@@ -139,7 +148,7 @@ function handleClick(event: Event) {
             stroke: var(--warning);
         }
 
-        .hmn-button__label {
+        .hmn-button__label, .indicator {
             color: var(--warning);
         }
 
