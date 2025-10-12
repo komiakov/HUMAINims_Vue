@@ -65,14 +65,12 @@ onBeforeUnmount(() => {
         min-width: 240px;
         padding: 6px;
         @include border();
-        border-radius: 9px;
+        border-radius: var(--block-radius);
         background-color: var(--bg-secondary);
+        @include shadow();
 
         .hmn-button {
-            height: 36px;
-            gap: 0px;
             justify-content: start;
-            border: none;
         }
 
         &.right {

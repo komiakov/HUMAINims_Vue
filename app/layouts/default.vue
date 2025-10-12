@@ -4,7 +4,6 @@ const { sidebarIsOpen } = useSidebar()
 
 <template>
     <div id="ims-page" data-theme="light" :class="{ max: !sidebarIsOpen }">
-        <HmnSidebar />
         <div id="ims-content">
             <NuxtPage />
         </div>
@@ -13,39 +12,10 @@ const { sidebarIsOpen } = useSidebar()
 
 <style lang="scss">
 #ims-page {
-    &, #ims-content {
-        height: 100vh;
-    }
-
-    &, #ims-content, #ims-content-body {
-        overflow: hidden;
-    }
-
     position: relative;
+    height: 100vh;
     width: 100vw;
+    overflow: hidden;
     background-color: var(--bg-main);
-
-    #ims-content {
-        display: grid;
-        grid-template-rows: auto auto 1fr;
-
-        #ims-content-body {
-            height: calc(100% - 18px);
-            margin: 12px 12px 6px 12px;
-        }
-    }
-}
-
-
-
-@media (min-width: 960px) {
-    #ims-page {
-        padding-left: 240px;
-        transition: padding .3s;
-
-        &.max {
-            padding: 0;
-        }
-    }
 }
 </style>

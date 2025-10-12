@@ -1,66 +1,86 @@
 <script setup lang="ts">
-const { toggleSidebar } = useSidebar()
+const icons = useIcons()
 </script>
 
 <template>
     <header class="container-flex">
         <section>
-            <HmnButton id="toggle-sidebar" icon-left="sidebar" @click="toggleSidebar" type="primary brdr" />
-            <slot name="header-left-btns"></slot>
-            <span id="header__page-name">
-                <slot name="header-page-name"></slot>
-            </span>
+            <NuxtLink to="/" id="logo">
+                <span class="icon" v-html="icons['logo']"></span>
+                <span id="logo__label">HUMANims</span>
+            </NuxtLink>
         </section>
         <section>
-            <slot name="header-right-btns"></slot>
-            <HmnButton id="global-search-btn" icon-left="search" label="Search..." class="mbl-hide" type="primary brdr" :disabled="true">
+            <HmnButton icon-left="notification" />
+            <HmnButton icon-left="search" label="Global search ..." type="primary brdr mbl-hide">
                 <template #indicatior-slot>
-                    <span class="kbd">⌘ F</span>
+                    <span class="kbd-slot"> 
+                        <span class="kbd">Cmd</span>
+                        +
+                        <span class="kbd">F</span>
+                    </span>
                 </template>
             </HmnButton>
+            <HmnDropdown label="Andrii" icon-right="arrowDown" type="accent">
+                <template #>
+                    <div id="userInfo">
+                        <span id="userInfo__name">Andrii KOMIAKOV</span>
+                        <span id="userInfo__email">andrii.komiakov@icloud.com</span>
+                    </div>
+                    <hr>
+                    <HmnButton icon-left="settings" label="Settings" />
+                    <HmnButton icon-left="license" label="license" />
+                    <hr>
+                    <HmnButton icon-left="documentation" label="Documentation" />
+                    <HmnButton icon-left="support" label="Support" />
+                    <hr>
+                    <HmnButton icon-left="logOut" label="Log Out" />
+                </template>
+            </HmnDropdown>
         </section>
     </header>
-    <div id="functional-panel" class="container-flex">
-        <section id="functional-panel__left">
-            <slot name="fp-left"></slot>
-        </section>
-        <section>
-            <slot name="fp-right"></slot>
-        </section>
-    </div>
 </template>
 
 <style lang="scss">
 header {
     background: var(--bg-secondary);
-    padding: 12px;
-    border-bottom: 1px solid var(--brdr-color);
+    padding: var(--block-padding);
+    @include border-bottom;
 
-    section {
-        gap: 18px;
+    #logo {
+        display: flex;
+        align-items: center;
+        gap: var(--gap);
 
-        &:nth-child(1) {
-            flex: 1;
-        }
+        .icon {
+            @include item-size;
+            background-color: var(--accent);
+            border-radius: var(--item-radius);
 
-        #header__page-name {
-            @include tx-md-bold;
-            color: var(--ft-main);
-            cursor: default;
-        }
-
-        #global-search-btn {
-            @include desktop-min(720px) {
-                min-width: 180px;
+            svg path {
+                fill: var(--white);
             }
         }
 
+        #logo__label {
+            @include tx-md-bold;
+            color: var(--ft-main);
+        }
     }
-}
 
-#functional-panel {
-    background: var(--bg-secondary);
-    padding: 12px;
-    border-bottom: 1px solid var(--brdr-color);
+    #userInfo {
+        display: grid;
+        padding: 12px 12px 6px 12px;
+        color: var(--ft-main);
+        #userInfo__name {
+            @include tx-md-bold;
+            cursor: default;
+        }
+        #userInfo__email {
+            @include tx-xs-bold;
+            opacity: .5;
+            cursor: default;
+        }
+    }
 }
 </style>

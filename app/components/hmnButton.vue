@@ -41,14 +41,15 @@ function handleClick(event: Event) {
 </script>
 
 <template>
-    <NuxtLink v-if="link" :to="disabled ? '' : link" class="hmn-button" :class="[{ 'disabled': disabled }, type]"
-        @click="handleClick">
+    <NuxtLink v-if="link" :to="disabled ? '' : link" class="hmn-button"
+        :class="[{ 'disabled': disabled }, type, { 'txt-left': label && iconRight }, { 'txt-right': label && iconLeft }, { 'txt': label && !iconLeft && !iconRight }]" @click="handleClick">
         <span v-if="iconLeft" class="hmn-button__icon icon" v-html="icons[iconLeft]"></span>
         <span v-if="label" class="hmn-button__label">{{ label }}</span>
         <span v-if="iconRight" class="hmn-button__icon icon" v-html="icons[iconRight]"></span>
         <slot name="indicatior-slot"></slot>
     </NuxtLink>
-    <button v-else class="hmn-button" :class="[{ 'disabled': disabled }, type]" @click="handleClick">
+    <button v-else class="hmn-button" :class="[{ 'disabled': disabled }, type, { 'txt-left': label && iconRight }, { 'txt-right': label && iconLeft }, { 'txt': label && !iconLeft && !iconRight }]"
+        @click="handleClick">
         <span v-if="iconLeft" class="hmn-button__icon icon" v-html="icons[iconLeft]"></span>
         <span v-if="label" class="hmn-button__label">{{ label }}</span>
         <span v-if="iconRight" class="hmn-button__icon icon" v-html="icons[iconRight]"></span>
@@ -58,18 +59,10 @@ function handleClick(event: Event) {
 
 <style lang="scss">
 .hmn-button {
-    @include item-def-format();
-
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 0 10px;
-    border: 1px solid transparent;
+    @include inline-center;
+    @include item-def-format();
     cursor: pointer;
-    overflow: hidden;
-    white-space: nowrap;
 
     &,
     & .hmn-button__label,
@@ -77,36 +70,49 @@ function handleClick(event: Event) {
         transition: .3s all;
     }
 
-    .hmn-button__icon,
-    .hmn-button__label {
-        z-index: 2;
-        white-space: nowrap;
+    &.txt-left {
+        padding: 0 var(--block-padding);
+
+        .hmn-button__label {
+            padding: 0 18px 0 9px;
+        }
+    }
+
+    &.txt-right {
+        padding: 0 var(--block-padding);
+
+        .hmn-button__label {
+            padding: 0 9px 0 12px;
+        }
+    }
+
+    &.txt {
+        padding: 0 var(--block-padding);
+
+        .hmn-button__label {
+            padding: 0 9px;
+        }
     }
 
     .hmn-button__label {
         flex: 1;
-    }
-    .indicator {
-        opacity: .5;
-    }
-
-    .hmn-button__label, .indicator {
         display: flex;
         justify-content: start;
-        padding: 0 6px;
         @include tx-btn-regular;
     }
 
     &.primary {
         color: var(--ft-main);
+
         &.brdr {
-            border: 1px solid var(--brdr-color);
+            @include border;
         }
+
         .hmn-button__icon svg path {
             stroke: var(--accent);
         }
 
-        .hmn-button__label, .indicator {
+        .hmn-button__label {
             color: var(--ft-main);
         }
 
@@ -122,48 +128,21 @@ function handleClick(event: Event) {
             stroke: var(--white);
         }
 
-        .hmn-button__label, .indicator {
+        .hmn-button__label {
             color: var(--white);
         }
-    }
-
-    &.alert {
-
-        .hmn-button__icon svg path {
-            stroke: var(--danger);
-        }
-
-        .hmn-button__label, .indicator {
-            color: var(--danger);
-        }
 
         @include hover() {
-            background-color: var(--danger-op-25);
-        }
-    }
-
-    &.warning {
-
-        .hmn-button__icon svg path {
-            stroke: var(--warning);
-        }
-
-        .hmn-button__label, .indicator {
-            color: var(--warning);
-        }
-
-        @include hover() {
-            background-color: var(--warning);
-
-            .hmn-button__icon svg path {
-                stroke: var(--white);
-            }
+            opacity: .85;
         }
     }
 
     @include desktop-max(719px) {
-        &.mbl-hide .hmn-button__label {
-            display: none;
+        &.mbl-hide{
+            padding: 0;
+            .hmn-button__label, .kbd-slot  {
+                display: none;
+            }
         }
     }
 }
