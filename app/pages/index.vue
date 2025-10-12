@@ -1,13 +1,13 @@
 <template>
-    <HmnHeader>
-        <template #header-page-name>Dashboard</template>
-        <template #header-right-btns>
-            <HmnButton icon-left="editDashboard" label="Edit" :disabled="true" />
-        </template>
-    </HmnHeader>
-    
     <div id="ims-content-body">
-
+        <div id="functional-panel" class="container-flex">
+            <section>
+                
+            </section>
+            <section>   
+                <HmnButton icon-left="editDashboard" type="primary brdr" />
+            </section>
+        </div>
     </div>
 </template>
 

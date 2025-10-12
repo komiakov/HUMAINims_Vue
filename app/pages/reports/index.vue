@@ -1,19 +1,18 @@
 <template>
-    <HmnHeader>
-         <template #header-left-btns>
-            <HmnDropdown icon-left="add" label="Create" alignment="left" type="accent mbl-hide">
-                <HmnButton label="Report" icon-left="report" :disabled="true" />
-                <HmnButton label="Folder" icon-left="addFolder" :disabled="true" />
-            </HmnDropdown>
-        </template>
-        <template #header-page-name>Reports</template>
-        <template #fp-left>
-            
-        </template>
-    </HmnHeader>
-
     <div id="ims-content-body">
-
+        <div id="functional-panel" class="container-flex">
+            <section>
+                <HmnDropdown icon-left="add" label="Create" type="accent" alignment="left">
+                    <template #>
+                        <HmnButton label="Report" icon-left="report"/>
+                        <HmnButton label="Folder" icon-left="addFolder"/>
+                    </template>
+                </HmnDropdown>
+            </section>
+            <section>   
+                
+            </section>
+        </div>
     </div>
 </template>
 
