@@ -17,24 +17,8 @@ const isActive = (path: string) => {
         <section>
             <NuxtLink to="/" id="logo">
                 <span class="icon" v-html="icons['logo']"></span>
-                <span id="logo__label">HUMANims</span>
             </NuxtLink>
-        </section>
-
-        <section>
-            <nav class="desktop">
-                <HmnButton icon-left="dashboard" label="Dashboard" link="/"
-                    :type="isActive('/') ? 'accent' : 'primary'" />
-                <HmnButton icon-left="database" label="Databases" link="/databases"
-                    :type="isActive('/databases') ? 'accent' : 'primary'" />
-                <HmnButton icon-left="report" label="Reports" link="/reports"
-                    :type="isActive('/reports') ? 'accent' : 'primary'" />
-            </nav>
-        </section>
-
-        <section>
-            <HmnButton icon-left="notification" />
-            <HmnButton icon-left="search" label="Global search ..." type="primary brdr mbl-hide">
+            <HmnButton icon-left="search" label="Global search ..." type="secondary brdr" :disabled="true">
                 <template #indicatior-slot>
                     <span class="kbd-slot">
                         <span class="kbd">Cmd</span>
@@ -43,6 +27,10 @@ const isActive = (path: string) => {
                     </span>
                 </template>
             </HmnButton>
+        </section>
+        <section>
+            <HmnButton icon-left="notification" type="secondary brdr" :disabled="true" />
+            
             <HmnDropdown label="Andrii" icon-right="arrowDown" type="accent">
                 <template #>
                     <div id="userInfo">
@@ -50,31 +38,32 @@ const isActive = (path: string) => {
                         <span id="userInfo__email">andrii.komiakov@icloud.com</span>
                     </div>
                     <hr>
-                    <HmnButton icon-left="settings" label="Settings" />
-                    <HmnButton icon-left="license" label="license" />
+                    <HmnButton icon-left="settings" label="Settings" :disabled="true" />
+                    <HmnButton icon-left="license" label="license" :disabled="true" />
                     <hr>
-                    <HmnButton icon-left="documentation" label="Documentation" />
-                    <HmnButton icon-left="support" label="Support" />
+                    <HmnButton icon-left="documentation" label="Documentation" :disabled="true" />
+                    <HmnButton icon-left="support" label="Support" :disabled="true" />
                     <hr>
-                    <HmnButton icon-left="logOut" label="Log Out" />
+                    <HmnButton icon-left="logOut" label="Log Out" :disabled="true" />
                 </template>
             </HmnDropdown>
         </section>
     </header>
-    <nav class="mobile">
-        <HmnButton icon-left="dashboard" label="Dashboard" link="/" :type="isActive('/') ? 'accent' : 'primary'" />
+    <nav>
+        <HmnButton icon-left="dashboard" label="Dashboard" link="/"
+            :type="isActive('/') ? 'accent' : 'secondary brdr'" />
         <HmnButton icon-left="database" label="Databases" link="/databases"
-            :type="isActive('/databases') ? 'accent' : 'primary'" />
+            :type="isActive('/databases') ? 'accent' : 'secondary brdr'" />
         <HmnButton icon-left="report" label="Reports" link="/reports"
-            :type="isActive('/reports') ? 'accent' : 'primary'" />
+            :type="isActive('/reports') ? 'accent' : 'secondary brdr'" />
     </nav>
 </template>
 
 <style lang="scss">
 header,
-nav.mobile {
+nav {
     background: var(--bg-secondary);
-    padding: var(--block-padding);
+    padding: var(--block-padding) calc(var(--item-padding) * 2);
     @include border-bottom;
 }
 
@@ -119,26 +108,9 @@ header {
 }
 
 nav {
+    display: flex;
     align-items: center;
     gap: var(--gap);
-
-    @include desktop-min(960px) {
-        &.desktop {
-            display: flex;
-        }
-        &.mobile {
-            display: none;
-        }
-    }
-
-    @include desktop-max(959px) {
-        &.desktop {
-            display: none;
-        }
-        &.mobile {
-            display: flex;
-        }
-    }
 
     @include desktop-max(600px) {
         justify-content: space-between;

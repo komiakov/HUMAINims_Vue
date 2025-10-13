@@ -5,7 +5,7 @@
                 
             </section>
             <section>   
-                <HmnButton icon-left="editDashboard" type="primary brdr" />
+                <HmnButton icon-left="editDashboard" type="primary brdr" :disabled="true" />
             </section>
         </div>
     </div>

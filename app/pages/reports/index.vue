@@ -4,8 +4,8 @@
             <section>
                 <HmnDropdown icon-left="add" label="Create" type="accent" alignment="left">
                     <template #>
-                        <HmnButton label="Report" icon-left="report"/>
-                        <HmnButton label="Folder" icon-left="addFolder"/>
+                        <HmnButton label="Report" icon-left="report" :disabled="true"/>
+                        <HmnButton label="Folder" icon-left="addFolder" :disabled="true"/>
                     </template>
                 </HmnDropdown>
             </section>

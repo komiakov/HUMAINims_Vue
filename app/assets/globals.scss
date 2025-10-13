@@ -33,6 +33,10 @@ body {
     border: 1px solid var(--brdr-color);
     border-radius: 3px;
   }
+
+  @include desktop-max(659px) {
+    display: none;
+  }
 }
 
 .container-flex {

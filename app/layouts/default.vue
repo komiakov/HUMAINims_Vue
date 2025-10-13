@@ -11,22 +11,16 @@
 #ims-page {
     position: relative;
     display: grid;
+    grid-template-rows: auto auto 1fr;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
     background-color: var(--bg-main);
 
-    @include desktop-min(960px) {
-        grid-template-rows: auto 1fr;
-    }
-
-    @include desktop-max(959px) {
-        grid-template-rows: auto auto 1fr;
-    }
-
-    #ims-content-body {
+    #ims-content {
         display: grid;
         grid-template-rows: auto 1fr;
+        gap: var(--gap);
         height: 100%;
         width: 100vw;
         padding: var(--item-padding);
@@ -37,7 +31,12 @@
             @include border;
             border-radius: var(--block-radius);
             background-color: var(--bg-secondary);
-            @include shadow;
+        }
+
+        #ims-content-body {
+            display: grid;
+            height: 100%;
+            overflow: hidden;
         }
     }
 }

@@ -62,6 +62,7 @@ function handleClick(event: Event) {
     position: relative;
     @include inline-center;
     @include item-def-format();
+    border: 1px solid transparent;
     cursor: pointer;
 
     &,
@@ -121,6 +122,23 @@ function handleClick(event: Event) {
         }
     }
 
+    &.secondary {
+        color: var(--ft-main);
+        background-color: var(--bg-item-main);
+
+        &.brdr {
+            @include border;
+        }
+
+        .hmn-button__icon svg path {
+            stroke: var(--accent);
+        }
+
+        .hmn-button__label {
+            color: var(--ft-main);
+        }
+    }
+
     &.accent {
         background-color: var(--accent);
 
@@ -137,10 +155,10 @@ function handleClick(event: Event) {
         }
     }
 
-    @include desktop-max(719px) {
+    @include desktop-max(659px) {
         &.mbl-hide{
             padding: 0;
-            .hmn-button__label, .kbd-slot  {
+            .hmn-button__label  {
                 display: none;
             }
         }
