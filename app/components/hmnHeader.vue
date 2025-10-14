@@ -10,6 +10,12 @@ const isActive = (path: string) => {
     return false
 }
 
+const navLinks = ref([
+    {icon: "dashboard", label: "Dashboard", link: "/"},
+    {icon: "database", label: "Databases", link: "/databases"},
+    {icon: "report", label: "Reports", link: "/reports"},
+])
+
 </script>
 
 <template>
@@ -18,19 +24,14 @@ const isActive = (path: string) => {
             <NuxtLink to="/" id="logo">
                 <span class="icon" v-html="icons['logo']"></span>
             </NuxtLink>
-            <HmnButton icon-left="search" label="Global search ..." type="secondary brdr" :disabled="true">
-                <template #indicatior-slot>
-                    <span class="kbd-slot">
-                        <span class="kbd">Cmd</span>
-                        +
-                        <span class="kbd">F</span>
-                    </span>
-                </template>
-            </HmnButton>
         </section>
         <section>
             <HmnButton icon-left="notification" type="secondary brdr" :disabled="true" />
-            
+            <HmnButton icon-left="search" label="Global search ..." type="secondary brdr mbl-hide" :disabled="true">
+                <template #indicatior-slot>
+                    
+                </template>
+            </HmnButton>
             <HmnDropdown label="Andrii" icon-right="arrowDown" type="accent">
                 <template #>
                     <div id="userInfo">
@@ -49,25 +50,13 @@ const isActive = (path: string) => {
             </HmnDropdown>
         </section>
     </header>
-    <nav>
-        <HmnButton icon-left="dashboard" label="Dashboard" link="/"
-            :type="isActive('/') ? 'accent' : 'secondary brdr'" />
-        <HmnButton icon-left="database" label="Databases" link="/databases"
-            :type="isActive('/databases') ? 'accent' : 'secondary brdr'" />
-        <HmnButton icon-left="report" label="Reports" link="/reports"
-            :type="isActive('/reports') ? 'accent' : 'secondary brdr'" />
-    </nav>
 </template>
 
 <style lang="scss">
-header,
-nav {
+header {
     background: var(--bg-secondary);
     padding: var(--block-padding) calc(var(--item-padding) * 2);
     @include border-bottom;
-}
-
-header {
     #logo {
         display: flex;
         align-items: center;
@@ -88,7 +77,6 @@ header {
             color: var(--ft-main);
         }
     }
-
     #userInfo {
         display: grid;
         padding: 12px 12px 6px 12px;
@@ -103,25 +91,6 @@ header {
             @include tx-xs-bold;
             opacity: .5;
             cursor: default;
-        }
-    }
-}
-
-nav {
-    display: flex;
-    align-items: center;
-    gap: var(--gap);
-
-    @include desktop-max(600px) {
-        justify-content: space-between;
-
-        .hmn-button {
-            width: 33%;
-            justify-content: center;
-
-            .hmn-button__label {
-                flex: none;
-            }
         }
     }
 }
