@@ -42,13 +42,13 @@ function handleClick(event: Event) {
 
 <template>
     <NuxtLink v-if="link" :to="disabled ? '' : link" class="hmn-button"
-        :class="[{ 'disabled': disabled }, type, { 'txt-left': label && iconRight }, { 'txt-right': label && iconLeft }, { 'txt': label && !iconLeft && !iconRight }]" @click="handleClick">
+        :class="[{ 'disabled': disabled }, type, { 'w-label': label }]" @click="handleClick">
         <span v-if="iconLeft" class="hmn-button__icon icon" v-html="icons[iconLeft]"></span>
         <span v-if="label" class="hmn-button__label">{{ label }}</span>
         <span v-if="iconRight" class="hmn-button__icon icon" v-html="icons[iconRight]"></span>
         <slot name="indicatior-slot"></slot>
     </NuxtLink>
-    <button v-else class="hmn-button" :class="[{ 'disabled': disabled }, type, { 'txt-left': label && iconRight }, { 'txt-right': label && iconLeft }, { 'txt': label && !iconLeft && !iconRight }]"
+    <button v-else class="hmn-button" :class="[{ 'disabled': disabled }, type, { 'w-label': label }]"
         @click="handleClick">
         <span v-if="iconLeft" class="hmn-button__icon icon" v-html="icons[iconLeft]"></span>
         <span v-if="label" class="hmn-button__label">{{ label }}</span>
@@ -62,63 +62,29 @@ function handleClick(event: Event) {
     position: relative;
     @include inline-center;
     @include item-def-format();
-    border: 1px solid transparent;
+    gap: var(--item-gap);
     cursor: pointer;
 
-    &,
-    & .hmn-button__label,
-    & .hmn-button__icon path {
-        transition: .3s all;
-    }
-
-    &.txt-left {
-        padding: 0 var(--block-padding);
-
-        .hmn-button__label {
-            padding: 0 18px 0 9px;
-        }
-    }
-
-    &.txt-right {
-        padding: 0 var(--block-padding);
-
-        .hmn-button__label {
-            padding: 0 9px 0 12px;
-        }
-    }
-
-    &.txt {
-        padding: 0 var(--block-padding);
-
-        .hmn-button__label {
-            padding: 0 9px;
-        }
+    &.w-label{
+        padding: 0 calc(var(--item-padding) * 2);
     }
 
     .hmn-button__label {
         flex: 1;
         display: flex;
-        justify-content: start;
+        justify-content: center;
         @include tx-btn-regular;
     }
 
     &.primary {
         color: var(--ft-main);
 
-        &.brdr {
-            @include border;
-        }
-
         .hmn-button__icon svg path {
-            stroke: var(--accent);
+            stroke: var(--white);
         }
 
         .hmn-button__label {
-            color: var(--ft-main);
-        }
-
-        @include hover() {
-            background-color: var(--bg-item-main);
+            color: var(--white);
         }
     }
 
@@ -126,16 +92,12 @@ function handleClick(event: Event) {
         color: var(--ft-main);
         background-color: var(--bg-item-main);
 
-        &.brdr {
-            @include border;
-        }
-
         .hmn-button__icon svg path {
-            stroke: var(--accent);
+            stroke: var(--white);
         }
 
         .hmn-button__label {
-            color: var(--ft-main);
+            color: var(--white);
         }
     }
 
@@ -148,10 +110,6 @@ function handleClick(event: Event) {
 
         .hmn-button__label {
             color: var(--white);
-        }
-
-        @include hover() {
-            opacity: .85;
         }
     }
 

@@ -14,23 +14,25 @@
     grid-template-rows: auto 1fr;
     height: 100vh;
     width: 100vw;
+    padding: var(--block-padding);
+    gap: var(--gap);
     overflow: hidden;
-    background-color: var(--bg-main);
+    background-color: var(--bg-secondary);
 
     #ims-content {
         display: grid;
         grid-template-rows: auto 1fr;
         gap: var(--gap);
         height: 100%;
-        width: 100vw;
         padding: var(--item-padding);
+        background-color: var(--bg-main);
+        border-radius: var(--block-radius);
         overflow: hidden;
 
         #functional-panel {
             padding: var(--item-padding);
             @include border;
             border-radius: var(--block-radius);
-            background-color: var(--bg-secondary);
         }
 
         #ims-content-body {
