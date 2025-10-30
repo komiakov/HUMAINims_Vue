@@ -15,7 +15,6 @@
     height: 100vh;
     width: 100vw;
     padding: var(--block-padding);
-    padding-bottom: env(safe-area-inset-bottom);
     gap: var(--gap);
     overflow: hidden;
     background-color: var(--bg-secondary);

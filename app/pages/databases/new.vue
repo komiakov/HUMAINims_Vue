@@ -1,17 +1,25 @@
 <script setup lang="ts">
-const { database, addColumn } = useColumns()
 
 </script>
 
 <template>
     <div id="functional-panel" class="container-flex">
-        <section>
-            <HmnButton icon-left="add" label="Add column" type="primary mbl-hide" @click="addColumn()" />
+        <section id="functional-panel__left">
+            <HmnInput id="database-name" placeholder="Enter database name" />
         </section>
         <section>
-            <HmnButton icon-left="translator" type="primary" :disabled="true" />
-            <HmnButton icon-left="editForm" label="Edit form" type="secondary mbl-hide" :disabled="true" />
-            <HmnButton icon-left="save" label="Save" type="accent" :disabled="true" />
+            <HmnButton class="desktop-btns" icon-left="translator" type="primary" :disabled="true" />
+            <HmnButton class="desktop-btns" icon-left="editForm" label="Edit form" type="secondary mbl-hide"
+                :disabled="true" />
+            <HmnButton class="desktop-btns" icon-left="save" label="Save" type="accent mbl-hide" :disabled="true" />
+            <HmnDropdown class="mobile-btns" icon-right="more" type="secondary mbl-hide" id="header-dropdown">
+                <template #>
+                    <HmnButton icon-left="save" label="Save" type="accent" :disabled="true" />
+                    <hr>
+                    <HmnButton icon-left="translator" label="Translations" type="primary" :disabled="true" />
+                    <HmnButton icon-left="editForm" label="Edit form" type="primary" :disabled="true" />
+                </template>
+            </HmnDropdown>
         </section>
     </div>
 
@@ -20,4 +28,40 @@ const { database, addColumn } = useColumns()
     </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+#functional-panel {
+    #functional-panel__left {
+        @include desktop-min(960px) {
+            flex: .75;
+        }
+
+        @include desktop-min(1200px) {
+            flex: .5;
+        }
+
+        @include desktop-max(959px) {
+            flex: 1;
+        }
+    }
+
+    @include desktop-min(660px) {
+        .desktop-btns {
+            display: flex;
+        }
+
+        .mobile-btns {
+            display: none;
+        }
+    }
+
+    @include desktop-max(659px) {
+        .desktop-btns {
+            display: none;
+        }
+
+        .mobile-btns {
+            display: flex;
+        }
+    }
+}
+</style>

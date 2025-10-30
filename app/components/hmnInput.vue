@@ -57,7 +57,7 @@ const emit = defineEmits(["update:modelValue"])
     padding: 0 9px;
     @include border();
     transition: .3s all;
-    background-color: var(--bg-item-main);
+    background-color: transparent;
 
     .error-message {
         display: none;

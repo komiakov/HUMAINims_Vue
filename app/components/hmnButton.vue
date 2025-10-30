@@ -111,7 +111,7 @@ function handleClick(event: Event) {
 
     &.accent {
         background-color: var(--accent);
-        transition: opacity .3s;
+        transition: background-color .3s;
 
         .hmn-button__icon svg path {
             stroke: var(--white);
@@ -122,7 +122,7 @@ function handleClick(event: Event) {
         }
 
         @include hover() {
-            opacity: .85;
+            background-color: var(--bg-item-secondary);
         }
     }
 
