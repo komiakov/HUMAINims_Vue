@@ -24,15 +24,13 @@
         grid-template-rows: auto 1fr;
         gap: var(--gap);
         height: 100%;
-        padding: var(--item-padding);
         background-color: var(--bg-main);
         border-radius: var(--block-radius);
+        border: 2px solid var(--accent);
         overflow: hidden;
 
         #functional-panel {
             padding: var(--item-padding);
-            @include border;
-            border-radius: var(--block-radius);
         }
 
         #ims-content-body {

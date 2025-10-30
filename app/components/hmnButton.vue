@@ -24,7 +24,7 @@ const props = defineProps({
     },
     type: {
         type: String,
-        default: 'primary',
+        default: '',
     },
 })
 
@@ -63,9 +63,11 @@ function handleClick(event: Event) {
     @include inline-center;
     @include item-def-format();
     gap: var(--item-gap);
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
     cursor: pointer;
 
-    &.w-label{
+    &.w-label {
         padding: 0 calc(var(--item-padding) * 2);
     }
 
@@ -77,19 +79,17 @@ function handleClick(event: Event) {
     }
 
     &.primary {
-        color: var(--ft-main);
-
+        border: 1px solid var(--brdr-color);
         .hmn-button__icon svg path {
-            stroke: var(--white);
+            stroke: var(--accent);
         }
 
         .hmn-button__label {
-            color: var(--white);
+            color: var(--ft-main);
         }
     }
 
     &.secondary {
-        color: var(--ft-main);
         background-color: var(--bg-item-main);
 
         .hmn-button__icon svg path {
@@ -114,9 +114,10 @@ function handleClick(event: Event) {
     }
 
     @include desktop-max(659px) {
-        &.mbl-hide{
+        &.mbl-hide {
             padding: 0;
-            .hmn-button__label  {
+
+            .hmn-button__label {
                 display: none;
             }
         }

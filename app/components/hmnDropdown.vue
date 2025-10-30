@@ -66,11 +66,16 @@ onBeforeUnmount(() => {
         padding: 6px;
         @include border();
         border-radius: var(--block-radius);
-        background-color: var(--bg-secondary);
+        background-color: var(--bg-main);
         @include shadow();
 
         .hmn-button {
             justify-content: start;
+            gap: var(--gap);
+            .hmn-button__label {
+                flex: none;
+            }
+            
         }
 
         &.right {
