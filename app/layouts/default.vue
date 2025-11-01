@@ -35,6 +35,8 @@
 
         #ims-content-body {
             display: grid;
+            align-items: start;
+            align-content: start;
             height: 100%;
             overflow: hidden;
         }

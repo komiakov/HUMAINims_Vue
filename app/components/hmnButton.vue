@@ -81,6 +81,7 @@ function handleClick(event: Event) {
     &.primary {
         border: 1px solid var(--brdr-color);
         transition: border .3s;
+
         .hmn-button__icon svg path {
             stroke: var(--accent);
         }
@@ -88,8 +89,9 @@ function handleClick(event: Event) {
         .hmn-button__label {
             color: var(--ft-main);
         }
+
         @include hover() {
-            border-color:var(--accent);
+            border-color: var(--accent);
         }
     }
 
@@ -104,6 +106,7 @@ function handleClick(event: Event) {
         .hmn-button__label {
             color: var(--white);
         }
+
         @include hover() {
             opacity: .85;
         }
@@ -123,6 +126,54 @@ function handleClick(event: Event) {
 
         @include hover() {
             background-color: var(--bg-item-secondary);
+        }
+    }
+
+    &.alert {
+        background-color: var(--danger-op-25);
+        transition: background-color .3s;
+        border: 1px solid var(--danger);
+
+        .hmn-button__icon svg path {
+            transition: stroke .3s;
+            stroke: var(--danger);
+        }
+
+        .hmn-button__label {
+            transition: color .3s;
+            color: var(--danger);
+        }
+
+        @include hover() {
+            background-color: var(--danger);
+
+            .hmn-button__icon svg path {
+                stroke: var(--white);
+            }
+        }
+    }
+
+    &.warning {
+        background-color: var(--warning-op-25);
+        transition: background-color .3s;
+        border: 1px solid var(--warning);
+
+        .hmn-button__icon svg path {
+            transition: stroke .3s;
+            stroke: var(--warning);
+        }
+
+        .hmn-button__label {
+            transition: color .3s;
+            color: var(--warning);
+        }
+
+        @include hover() {
+            background-color: var(--warning);
+
+            .hmn-button__icon svg path {
+                stroke: var(--white);
+            }
         }
     }
 

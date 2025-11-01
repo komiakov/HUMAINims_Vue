@@ -22,7 +22,9 @@
     </div>
 
     <div id="ims-content-body">
-
+        <HmnColumn />
+        <HmnColumn />
+        <HmnColumn />
     </div>
 </template>
 
@@ -61,5 +63,10 @@
             display: flex;
         }
     }
+}
+
+#ims-content-body {
+    gap: var(--item-gap);
+    padding: 0 var(--item-padding);
 }
 </style>
